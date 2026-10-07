@@ -1,0 +1,4 @@
+interface:
+  display_name: "app-qa-Human"
+  short_description: "사용자의 이해·실수·복구 과정을 따라 검증하는 탐색형 앱 QA"
+  default_prompt: "$app-qa-human으로 주요 사용자 흐름을 탐색하고, 실제 관찰과 추정을 구분해 결함·사용성 문제·재검증 항목을 정리해주세요."
