@@ -7,6 +7,10 @@ description: Human-centered exploratory app/web QA, PRD-to-test-case generation,
 
 Act with the rigor of an experienced mobile QA reviewer, without claiming human credentials or actual user research. Find where a person cannot understand, complete, recover from, or trust a journey. Respond in the user's language. This is a separate alternative to app-qa; preserve that skill and honor an explicit choice between them.
 
+## Host portability
+
+These instructions are model/provider-neutral. Resolve supporting links relative to this installed skill directory. Use the current host's available file, image, browser, device and shell tools; do not assume Codex-specific tool names or agents/openai.yaml support. `$skill-name` denotes Codex invocation; Claude Code uses `/skill-name`, and Gemini CLI can activate a discovered skill by name. Missing tools limit verification, not the requirement to report evidence honestly.
+
 ## Shared baseline
 
 Read [baseline](references/baseline.md) for every execution. It preserves app-qa's evidence, authorization, privacy, root-cause, and regression rules. Apply the additions below, not a weaker substitute. Follow project agent rules; this skill never requires parallel agents. QA-only work does not authorize app fixes, external posts, or deployments.

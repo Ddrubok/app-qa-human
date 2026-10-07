@@ -21,6 +21,56 @@ A skill is instructions for an agent, not a standalone QA service. It does not s
 
 The default seven areas cover functionality, usability/accessibility, interruptions, exceptions/recovery, data/permissions/privacy, compatibility/performance, and distribution/operations. Supplied company categories take precedence.
 
+## Codex, Claude Code, and Gemini CLI
+
+The core uses standard `SKILL.md` frontmatter (name/description), Markdown instructions, and relative references. `agents/openai.yaml` is optional Codex UI metadata, not a dependency of the workflow.
+
+| Host | Personal installation | Invocation |
+|---|---|---|
+| Codex | Existing supported skill directory; see installation below | `$app-qa-human` |
+| Claude Code | `~/.claude/skills/app-qa-human` | `/app-qa-human` |
+| Gemini CLI | `~/.gemini/skills/app-qa-human` | Ask Gemini to activate `app-qa-human`; inspect with `/skills list` |
+
+Claude Code installation:
+
+```sh
+git clone https://github.com/Ddrubok/app-qa-human.git ~/.claude/skills/app-qa-human
+```
+
+Gemini CLI installation (may ask for installation consent):
+
+```sh
+gemini skills install https://github.com/Ddrubok/app-qa-human --scope user
+gemini skills list
+```
+
+For a single project use `.claude/skills/app-qa-human` or Gemini's `--scope workspace`. The `# app-qa-Human
+
+[English](README.md) | [한국어](README.ko.md)
+
+**An AI agent skill for reviewing an app through a person's goals, mistakes, interruptions, and recovery.**
+
+This is a separate alternative to [app-qa](https://github.com/Ddrubok/app-qa). It keeps the original evidence standards and adds exploratory journeys, requirement-linked test cases, bug report normalization, and store review risk checks. Both skills can be installed so you can compare them explicitly.
+
+A skill is instructions for an agent, not a standalone QA service. It does not simulate real research participants or automatically connect to your app, company knowledge base, or issue tracker.
+
+## What it does
+
+| Capability | Result |
+|---|---|
+| Human-centered exploration | Checks whether a user can find an action, predict its result, understand feedback, and recover |
+| PRD/design to test cases | Requirement-linked cases with setup, steps, expectations, and execution status |
+| Informal bug notes to reports | Structured reports with missing facts explicitly marked unknown |
+| Store review risk | Applicable current official policies connected to implementation evidence |
+| Company knowledge retrieval | Source/version-aware retrieval of standards and past defects |
+| Comparison with app-qa | Same-condition evaluation guidance and 16 additional synthetic cases |
+
+The default seven areas cover functionality, usability/accessibility, interruptions, exceptions/recovery, data/permissions/privacy, compatibility/performance, and distribution/operations. Supplied company categories take precedence.
+
+ examples below are Codex examples; use Claude's slash command or Gemini's natural-language activation instead. Plain chat websites, Claude uploads, and Antigravity/agy discovery are separate host integrations and are not certified by these CLI checks.
+
+See [compatibility evidence and limits](COMPATIBILITY.md).
+
 ## Install
 
 Clone into one skill location recognized by your agent:

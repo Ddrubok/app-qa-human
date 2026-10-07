@@ -21,6 +21,56 @@
 
 기본 7개 영역은 기능, 사용성·접근성, 인터럽트, 예외·복구, 데이터·권한·개인정보, 호환성·성능, 배포·운영입니다. 회사 기준이 제공되면 해당 분류를 우선합니다.
 
+## Claude Code·Gemini CLI에서도 사용하기
+
+핵심은 공통 `SKILL.md`와 상대경로 참조 문서입니다. `agents/openai.yaml`은 Codex 표시용 부가 정보이며 다른 도구에서 실행하는 데 필요하지 않습니다.
+
+| 도구 | 개인 설치 위치 | 호출 |
+|---|---|---|
+| Codex | 아래 설명의 현재 인식 경로 | `$app-qa-human` |
+| Claude Code | `~/.claude/skills/app-qa-human` | `/app-qa-human` |
+| Gemini CLI | `~/.gemini/skills/app-qa-human` | “app-qa-human 스킬을 활성화해서 작업해줘” |
+
+Claude Code 설치:
+
+```sh
+git clone https://github.com/Ddrubok/app-qa-human.git ~/.claude/skills/app-qa-human
+```
+
+Gemini CLI 설치:
+
+```sh
+gemini skills install https://github.com/Ddrubok/app-qa-human --scope user
+gemini skills list
+```
+
+프로젝트 전용이면 Claude는 `.claude/skills/app-qa-human`, Gemini는 `--scope workspace`를 사용합니다. 설치·활성화 동의가 표시될 수 있습니다. 이후의 `# app-qa-Human
+
+[English](README.md) | [한국어](README.ko.md)
+
+**사용자의 목표·실수·중단·복구 과정을 따라 앱을 점검하는 AI 에이전트 스킬입니다.**
+
+[기존 app-qa](https://github.com/Ddrubok/app-qa)를 유지하면서 별도로 설치하고 비교할 수 있습니다. 기존의 증거·재현 기준에 탐색형 QA, 테스트 케이스 생성, 버그 리포트 표준화, 스토어 심사 위험 점검을 추가했습니다.
+
+스킬은 에이전트가 읽는 지침입니다. 실제 사람을 대상으로 한 사용자 조사나 자동 QA 서버가 아니며, 설치만으로 앱·회사 지식·협업 툴이 연결되지 않습니다.
+
+## 무엇이 추가되었나요?
+
+| 기능 | 확인하거나 만드는 것 |
+|---|---|
+| 사용자 관점 탐색 | 다음 행동을 찾고, 결과를 예상하고, 피드백을 이해하고, 실수에서 회복할 수 있는지 |
+| PRD·디자인 기반 TC | 요구사항에 연결된 사전 조건·실행 절차·예상 결과·실행 상태 |
+| 버그 리포트 정리 | 불명확한 제보에서 사실과 추정을 구분한 보고서 |
+| 스토어 심사 위험 | 현재 공식 정책의 적용 조건과 실제 구현 증거 |
+| 회사 지식 검색 | 지침·과거 결함의 출처, 버전, 충돌 및 유효성 |
+| 비교 평가 | 동일 조건 비교 절차와 추가 가상 평가 사례 16개 |
+
+기본 7개 영역은 기능, 사용성·접근성, 인터럽트, 예외·복구, 데이터·권한·개인정보, 호환성·성능, 배포·운영입니다. 회사 기준이 제공되면 해당 분류를 우선합니다.
+
+ 호출 예시는 Codex용이며 다른 도구에서는 위 호출 방식으로 바꾸세요.
+
+확인 범위는 **CLI 환경**입니다. 일반 웹 채팅, Claude 웹 업로드, Antigravity/agy의 자동 로딩까지 검증한 것은 아닙니다. [호환성 확인 기록](COMPATIBILITY.md)을 참고하세요.
+
 ## 설치
 
 에이전트가 인식하는 스킬 위치 한 곳에 설치하세요.
