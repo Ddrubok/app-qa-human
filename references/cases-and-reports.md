@@ -8,35 +8,46 @@ Use one purpose per case, numbered executable actions, clear setup/reset, and ob
 
 For execution QA, use [Task completion](task-completion.md). Put the user's completed outcome in expected_results, not just "button responds"; record the last completed action and remaining check in actual_result when coverage is partial. Generated cases still stay not-run.
 
-Canonical case fields:
+## Core and extended records
 
-`id, requirement_refs[], area, title, priority, preconditions[], test_data, steps[], expected_results[], expectation_basis, assumption, status, actual_result, evidence_refs[], environment, cleanup`
+Use `schema_version: "2.0"` for this core/extended representation. Preserve existing field names; do not silently migrate a consumer expecting the old complete schema. If an external contract requires every field, provide it, using null/unknown rather than fabricated values.
 
-- status: `not-run | passed | failed | blocked | not-applicable`.
-- actual_result and evidence_refs remain null/empty for generated cases.
-- passed/failed require execution evidence. Code-only review does not pass a runtime TC.
-- priority means execution order; it is not defect severity.
-- use null/unknown explicitly; preserve source facts and user wording where relevant.
+At run level record `scope, environment, sources, assumptions, coverage, limitations`. State mode, evidence origin and effective screenshot option where applicable. Case/finding environment can refer to this shared environment; override only differing conditions. Source IDs must resolve to actual supplied or inspected sources.
 
-For Markdown use `ID | Requirement | Area | Preconditions | Steps | Expected | Priority | Status`, with long evidence beneath the table. For JSON return `schema_version, scope, sources, assumptions, cases, coverage, limitations` with these case records. Validate JSON parsing before delivery.
+**Case core:** `id, title, preconditions, steps, expected_results, expectation_basis, priority, status, actual_result, evidence_refs` plus a resolvable environment reference. Core is enough to reproduce the case and judge its outcome.
 
-For live QA reports, record the effective `screenshots` option (`on` or `off`) in scope and any mid-task changes. Record screenshot coverage separately as `complete | partial | unavailable | disabled | not-run`; use `not-applicable` for document-only work. Complete requires saved, inspected images; a future capture plan is not-run. Under ON, link/embed the verified captures beside their case/finding and keep image paths in evidence_refs. Under OFF, record text/log/file evidence and any limits of visual verification instead; absence of screenshots does not itself fail a functional test. List each missing required capture and its reason instead of implying complete image coverage.
+**Case extended:** `requirement_refs, area, test_data, assumption, cleanup` and additional project contract fields. Requirement mapping is required when the task asks for PRD coverage. Cleanup is required for state-changing execution; optional serialization never makes necessary cleanup optional.
 
-For Excel, use available workbook tools to create a genuine .xlsx, with Cases, Coverage, and Sources sheets. Format cells as text for untrusted text starting with =, +, -, or @; avoid formula/link execution. Reopen the file and check sheet names, row count, Unicode, IDs and multiline steps. If no workbook tool is available, say so and deliver Markdown/JSON or explicitly labeled UTF-8 CSV; never rename a CSV to .xlsx. Escape CSV quotes/newlines and neutralize spreadsheet formulas while retaining the original in safe JSON when needed.
+- `status`: `not-run | passed | failed | blocked | not-applicable`. For a partially exercised case, state the last completed step and remaining verification; do not pass it. Use blocked when a concrete dependency prevented completion, not-run for remaining unattempted checks; split cases if needed.
+- Generated cases are not-run with actual_result=null and evidence_refs=[]. Keep the requirements in expectation_basis/sources, not as fabricated execution evidence.
+- Passed/failed requires execution evidence. Source review alone cannot pass a runtime case. Supplied execution records remain attributed to their original executor.
+- Case `priority` means execution order (baseline definitions).
+
+Markdown may show a compact table with long evidence beneath it. JSON uses `schema_version, scope, environment, sources, assumptions, cases, findings, coverage, limitations`; omit irrelevant collections only if the requested consumer allows it. Validate JSON parsing and preserve stable IDs. In full mode, cover all seven areas with covered/partial/not-tested/not-applicable and reasons. A coverage row is not a passed test.
+
+Screenshot lifecycle and coverage follow [Screenshot evidence](screenshots.md). Functional test status and visual-review status are independent.
+
+## XLSX export
+
+For requested Excel output, use [export_xlsx.py](../scripts/export_xlsx.py) with an existing Python/openpyxl environment: `python scripts/export_xlsx.py report.json report.xlsx`. The helper writes Cases, Coverage and Sources; Findings is included when present. Sources include run context and assumptions/limitations. It is an optional export tool, not an installation prerequisite for QA. If unavailable, use an existing workbook tool with equivalent checks or deliver an explicitly identified Markdown/JSON alternative. Never rename CSV as XLSX or install a stack merely for routine review.
+
+Untrusted text must be stored as literal string values, not just given a text number format. Check the saved workbook's actual cell types, absence of formulas/external links, record counts, IDs, Unicode, multiline steps, and exact round-trip values. Reject or explicitly split overlong cells while preserving the full source JSON; never silently truncate. Do not strip meaningful whitespace or alter numeric data to hide loss. Parsing proves file structure/content only; Excel UI compatibility remains untested unless exercised.
+
+If CSV is explicitly requested, use properly escaped UTF-8 CSV and neutralize spreadsheet formula interpretation in untrusted fields, retaining exact original values in safe JSON when needed. CSV has no cell-type metadata; an XLSX text-format setting is not a CSV defense. Describe any changed export representation and never label CSV as XLSX. This preserves the legacy CSV safeguard; the bundled helper itself exports XLSX only.
 
 ## Normalize rough bug notes
 
 Preserve reporter claims as reported, not reproduced. Do not supply fictional environment, frequency, timestamps, repro actions, expected rules, or root cause. A missing field is unknown and may need a focused follow-up; provide the usable draft immediately.
 
-Canonical finding fields:
+**Finding core:** `id, category, title, severity, priority, evidence_level, affected_journey, preconditions, steps_to_reproduce, expected, expectation_basis, actual, impact, evidence_refs` plus a resolvable environment reference. Unknown fields stay null/unknown; a concise presentation need not display every null field.
 
-`id, category, title, severity, priority, evidence_level, environment, affected_journey, preconditions, steps_to_reproduce, expected, expectation_basis, actual, impact, frequency, evidence_refs, suspected_cause, minimum_fix, retest, related_ids, missing_information`
+**Finding extended:** `frequency, suspected_cause, minimum_fix, retest, related_ids, missing_information` and additional project fields. Include a meaningful retest when proposing a fix; no invented root cause, frequency or environment to fill the form.
 
 - category: `functional | usability | misleading-presentation | requirement-gap | policy-risk`.
-- evidence_level: `reproduced | code-confirmed | needs-verification`.
-- baseline P1/P2/P3 priorities apply when no project convention exists. Explain impact separately from urgency.
-- inferred cause/frequency stays labeled or unknown. A polished report is not stronger evidence.
-- merging duplicates preserves original report references and distinguishes genuinely separate causes.
+- evidence_level: `reproduced | code-confirmed | needs-verification`. Record executor/provenance in the evidence record; a supplied report is not your own reproduction.
+- Severity describes impact; finding priority describes fix urgency (baseline definitions). Keep both separate from test execution order.
+- Inferred cause/frequency stays labeled or unknown. A polished report is not stronger evidence. A reproducible failure may be confirmed while its cause remains unknown.
+- Merging duplicates preserves original references; do not assume a shared cause solely from similar symptoms.
 
 ## Evidence origin and comparisons
 

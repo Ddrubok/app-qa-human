@@ -17,34 +17,26 @@ Read [baseline](references/baseline.md) for every execution. It preserves app-qa
 
 ## Select the requested work
 
-Do not run every mode for a narrow request.
+Do not run every mode for a narrow request. Common authorization, privacy and evidence rules live in baseline.md; mode references specialize them, never relax them.
 
 | Request | Read and do |
 |---|---|
-| Review an app, human-like QA | Human journey workflow below and [Task completion](references/task-completion.md); generate only useful supporting cases |
+| Review an app, human-like QA | Human journey workflow, [Task completion](references/task-completion.md), [Tool execution](references/tool-execution.md), [Human error patterns](references/human-errors.md) and [Cases and reports](references/cases-and-reports.md); select relevant checks |
 | Generate TC from PRD, design, or screenshots | [Cases and reports](references/cases-and-reports.md); planned cases stay not-run |
-| Normalize an informal bug note | Same reference; preserve unknowns, do not invent reproduction |
+| Normalize an informal bug note | Same reference; preserve unknowns, do not invent reproduction; supplied-image analysis also reads [Screenshot evidence](references/screenshots.md) |
 | Compare existing human/AI QA reports | Same reference; identify who executed each check, match scope and symptoms, preserve unknowns |
 | Store rejection risk / release readiness | [Store review](references/store-review.md); current official sources required for policy conclusions |
 | Company standards, past bugs, RAG | [Knowledge retrieval](references/knowledge.md); retrieve relevant evidence, not the whole library |
 | Compare the two skills or evaluate this skill | [Evaluation](references/evaluation.md); same inputs and independent results |
 
-## Screenshot option
+## Accuracy and report options
 
-For live app/web QA, screenshots are **ON by default**. Treat `screenshots=on` and `screenshots=off` as options in the user's request, not executable commands. Accept equivalent wording such as "스크린샷 켜고", "스크린샷 끄고", or "스크린샷 찍지 말고". Do not ask the user to choose when they gave no option; use ON.
+Prefer correct, supported decisions over speed or finding count. Do not reduce required verification to shorten a report. A confirmed defect needs an expectation basis and evidence of a mismatch; an unknown cause does not make an observed failure disappear. Conversely, insufficient evidence is not proof of failure or success.
 
-| Request example | Effective behavior |
-|---|---|
-| `$app-qa-human으로 QA해주세요` | ON: capture and include screenshot evidence |
-| `$app-qa-human screenshots=on으로 QA해주세요` | ON explicitly |
-| `$app-qa-human screenshots=off으로 QA해주세요` | OFF: no new screenshots; report with text and other permitted evidence |
-
-State the effective option briefly at the start and in the report. The latest explicit user choice applies for the current QA task, including continuation turns. If the user changes it mid-task, apply it from the next action. A separate new QA task defaults to ON unless the user explicitly established a broader preference. Do not delete earlier captures merely because the option changes to OFF; identify their earlier capture period if they must be referenced.
-
-- **ON:** Capture every tested screen/case's relevant starting state and observed result, including successful results and partial checks. Capture a defect's visible state before navigating away, plus recovery/retest results when exercised. Reuse a capture that genuinely represents multiple case IDs; do not take duplicate images of an unchanged state or capture every keystroke. Save evidence beside the QA report in a run-specific `screenshots/` folder (or the project's existing evidence layout), with stable case/finding IDs in filenames. Link or embed the images under the corresponding report items and describe what each proves. Verify the saved images using the rules below.
-- **OFF:** Do not call screenshot/capture tools, save new screen images, or use automatic screenshot returns as a workaround. Prefer DOM, accessibility, text, and permitted logs/artifacts for interaction and evidence. If a tool unavoidably captures screenshots and cannot disable that behavior, defer those dependent steps and explain the limitation; continue independent checks. Do not attach newly generated screenshot evidence or claim visual checks that were not possible. Supplied images may still be analyzed when that is the requested task; this does not authorize new capture.
-- **Unavailable or sensitive evidence:** ON never overrides tool availability or the baseline's privacy rules. Prefer test data, safe capture regions, and redaction before persistence/sharing. If capture is unavailable, fails, or cannot safely preserve the relevant state, record the exact missing screenshot and reason; continue other checks without fabricating an image or silently switching OFF. Record screenshots as complete, partial, unavailable, disabled, or not-run independently of the functional test result. Complete requires the required images to have been saved and inspected; a capture plan is not-run, never "complete (planned)".
-- **Document-only work:** Generating cases, rewriting notes, or comparing existing reports does not authorize opening an app or producing new runtime evidence. Label supplied/manual images by origin and report new capture as not applicable.
+- `mode=quick` (default): concise findings, successful checks, evidence and remaining gaps. Zero defects is valid. Lead with consequential findings; never omit serious findings to meet a quota. Summarize overflow and link full records when needed.
+- `mode=full`: detailed cases/findings and a seven-area coverage matrix. Full means explicit coverage and limits, not that every possible test ran or every optional field is known.
+- Format (Markdown by default, JSON/XLSX on request) is independent of report depth. Honor explicit output contracts and include limitations within strict JSON. See [Cases and reports](references/cases-and-reports.md).
+- Live QA defaults to `screenshots=on`; explicit OFF persists through that task. Read [Screenshot evidence](references/screenshots.md) for every live/visual review. Report-only work never authorizes new runtime captures.
 
 ## Human journey workflow
 
@@ -56,8 +48,6 @@ State the effective option briefly at the start and in the report. The latest ex
 6. Investigate surprising behavior through UI, state, backend, and authorization rules. Test the strongest benign explanation. Separate implementation defects, usability hypotheses, requirements gaps, policy risks, and unsupported claims. Do not count different symptoms of one cause as independent bugs.
 7. Recheck a suspected issue from a clean state where feasible. Stop when the selected journeys and risk boundaries have adequate evidence, or record exactly what prevents further coverage. Do not click randomly until a finding quota is met.
 8. Deliver prioritized findings, successful checks, meaningful coverage gaps, and correction/retest guidance. Separate screens reached from tasks completed; a partially inspected task is not passed. Say what was actually run, mocked, inspected, or only proposed, and who supplied the observation. Device behavior, accessibility, and human satisfaction remain unverified unless directly tested with suitable tools or participants.
-
-For screenshots captured under the selected option, open the saved image before citing it. Blank, loading-only, wrong-screen, or over-redacted captures need replacement when capture is ON, or an explicit evidence gap; a blank file alone does not prove an app blank-screen defect. Report visible clipping, occlusion, contrast concerns, or hierarchy with image ID and region. A static picture does not prove tap behavior, screen-reader announcements, focus order, timing, persistence, or exact physical target size. Measure contrast only with known colors and context; account for scaling and antialiasing. If the UI cannot be exercised, preserve a visual-only scope for supplied images.
 
 ## Seven coverage areas
 

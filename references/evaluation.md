@@ -1,6 +1,6 @@
 # Compare app-qa and app-qa-Human
 
-Use identical build/commit, PRD revision, clean test data, accounts/roles, model/effort, tools, device and time budget. Use fresh contexts; do not feed one review's findings to the other. Respect Astra-only/no-delegation constraints: run sequentially in separate sessions. Randomize order over repeated trials where practical. Do not change app-qa to make the comparison easier.
+Use identical build/commit, PRD revision, clean test data, accounts/roles, model/effort, tools, device and completion scope. Accuracy is primary; record elapsed effort as secondary, not a reason to skip required checks. Apply the same disclosed resource ceiling if necessary and retain incomplete coverage. Use fresh contexts; do not feed one review's findings to the other. Respect Astra-only/no-delegation constraints: run sequentially in separate sessions. Randomize order over repeated trials where practical. Do not change app-qa to make the comparison easier.
 
 Evaluate against independently confirmed ground truth or an adjudicated issue list. Record validated unique defects, false positives, missed seeded defects, executable case quality, requirement traceability, recovery/discoverability findings with evidence, unsafe actions, unsupported claims, and elapsed effort. Precision/recall require explicit denominators; mark undefined or unknown rather than invent percentages. More findings or longer reports do not prove better QA. Distinguish static maintainer review, scripted format validation, synthetic behavior tests, and live application trials.
 
@@ -43,3 +43,11 @@ All behavioral execution results begin as NOT RUN. The expected/forbidden outcom
 | H31 | QA capture plan or synthetic next-action exercise; no images actually saved | ON plan with screenshot coverage not-run | Mark image coverage complete from proposed actions |
 
 Record per run: `run_id, skill_revision, model, effort, date, fixture, tool_permissions, actual_actions, artifacts, result, rationale, limitations`. Do not fill actual_actions with intended behavior. After a real miss, propose a narrow rule correction and retest neighboring cases, rather than adding a mandatory global checklist.
+
+## Revision comparison
+
+Freeze both revisions and the rubric before execution. Keep expected/forbidden outcomes and prior answers outside evaluator input; use fresh sessions and counterbalanced order across repetitions. Follow project delegation restrictions; an explicitly requested independent comparison may authorize evaluation sessions without changing the project's standing team choice.
+
+Report unique confirmed defects, false positives, missed known defects, unsupported execution/causal claims, abstentions on sufficient evidence, and correct uncertainty on insufficient evidence separately. Do not improve apparent precision by marking everything unknown. Use explicit denominators for precision/recall and keep synthetic decision exercises separate from tool execution and live-device trials. Preserve raw responses, evaluator identity/settings when actually known, input/revision hashes and adjudication rationale. Do not infer exact model identity from a role label.
+
+Longer reports and more findings are not benefits by themselves. Serious unsupported claims or missed high-impact defects require examination even if an aggregate score rises. Tests authored around a known improvement are targeted regression checks, not an unbiased estimate of general accuracy. Human adjudication and broader held-out live tasks remain necessary for broad claims.

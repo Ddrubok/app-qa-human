@@ -1,4 +1,3 @@
-
 # App QA
 
 Produce a review the user can act on: what fails, under which conditions, how it affects a person, what evidence supports it, and the smallest adequate correction. Match the user's language and requested depth. Do not invent a target number of findings.
@@ -61,7 +60,13 @@ Test the strongest alternative explanation before retaining a finding. For examp
 
 Compare prior findings with current code and evidence: resolved, still present, residual path, or not retested. Do not relabel all earlier issues as current or imply regression coverage that was not run.
 
-Prioritize by user harm and likelihood, not by how dramatic a title sounds. Use existing project severity conventions when available; otherwise P1 for major functional/trust harm, P2 for ordinary failures/friction, and P3 for minor presentation issues. Mark an urgent blocker separately only when evidence warrants it.
+Use the project's documented severity and priority conventions; record their mapping. Otherwise use these independent axes:
+
+- **Severity (impact if it occurs):** Critical = destructive/security or broadly blocking core failure; Major = substantial loss of an important outcome; Minor = limited impairment with a workable path; Trivial = small presentation issue without demonstrated functional loss. Use unknown when impact is not established. These are default conventions, not universal standards.
+- **Finding priority (fix urgency):** P1 = resolve before the relevant release/operation or address urgently; P2 = planned correction; P3 = deferred improvement. Explain exposure, likelihood, available workaround and release context. Severity informs priority but does not mechanically determine it. Do not invent a deadline or frequency.
+- **Case priority (execution order):** P1 = test the important risk first; P2 = ordinary coverage; P3 = lower-risk follow-up. A test case's priority is not a defect severity.
+
+Keep the existing `severity` and `priority` keys for compatibility; clarify the meaning by record type. Unknown urgency remains unknown. Do not assign a confirmed defect severity to a style preference or an unverified hypothesis as if its impact were established.
 
 ## Deliverable
 

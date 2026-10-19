@@ -80,7 +80,7 @@ Preserve unknown details and do not publish them.
 
 ### Screenshots: ON by default
 
-Live app/web QA captures the relevant starting state and result of each tested screen/case, including successful checks and observed defects. Saved images are inspected and linked or embedded beside the matching report items.
+Live app/web QA captures the relevant starting state and result of each tested screen/case, including successful checks and observed defects. When an image viewer is available, saved images are inspected and linked beside the matching report items. Without a viewer, label the artifact `Image file created (unverified visually by agent)` and continue supported DOM/text checks. Saving an image is not visual verification.
 
 ```text
 $app-qa-human screenshots=on Review this app and include screenshot evidence.
@@ -92,6 +92,32 @@ These are request options, not shell commands. With no option, live QA uses ON. 
 Missing capture tools or unsafe sensitive content are recorded as evidence gaps. Planned captures are not-run until executed. Rewriting notes or comparing existing reports does not start live QA or generate new screenshots; supplied/manual images retain their source labels.
 
 For JSON or Excel, request the format explicitly. Actual XLSX creation requires available workbook tooling; the skill must not rename CSV to XLSX. Store review requires current official sources and the target store/region/build.
+
+## Report depth and exports
+
+Use `mode=quick` (default) for a concise report or `mode=full` for detailed records and the seven-area coverage matrix. These control report depth, not how much verification is required. Zero defects is a valid result; serious findings must not be omitted to meet a quota. Markdown, JSON, and XLSX are separate format choices.
+
+```text
+$app-qa-human mode=quick Review signup and recovery.
+$app-qa-human mode=full screenshots=off Compare this implementation with the PRD.
+```
+
+Cases and findings separate Core and Extended fields. Severity describes impact; finding priority describes fix urgency, and case priority describes execution order. Human-error checks cover repeated submission, unfinished forms, interruptions, larger text, and keyboard obstruction. Tool guidance covers Playwright, ADB, Maestro, Appium, and iOS Simulator, subject to the host's capabilities.
+
+The optional [XLSX helper](scripts/export_xlsx.py) requires Python and an available `openpyxl` installation; it does not install dependencies. It stores strings as literal text, checks saved values and workbook structure, and rejects oversized cells or an existing output path instead of silently losing data. See the [input contract and usage](references/cases-and-reports.md). CSV has separate safety requirements; this helper exports XLSX only.
+
+## Update validation — 2026-10-19
+
+| Version | First run | Second run | Total rubric passes |
+|---|---:|---:|---:|
+| Previous local version | 52/52 | 52/52 | 104/104 |
+| Improved comparison candidate | 52/52 | 52/52 | 104/104 |
+
+This was a synthetic decision comparison: 40 existing scenarios and 12 targeted additions, repeated twice. Each version/run used a fresh context with the same inherited model and reasoning configuration; the exact backend model identifier was unavailable. The second round reversed case order. Evaluators did not receive expected answers. Independent AI judges graded anonymized responses against frozen criteria; no human adjudication was performed. Cases shared a context within each run and partly overlap.
+
+Both versions met all criteria in this sample. **An accuracy improvement was not demonstrated.** These results are not live-app accuracy, precision/recall, or proof of reliable behavior on other models. No fair speed comparison was performed.
+
+After the comparison, the final version restored one CSV safeguard paragraph in `references/cases-and-reports.md`. Two additional synthetic XLSX/CSV decisions on that final text met coordinator-reviewed criteria; the full comparison was not rerun on the exact final text. The unchanged XLSX helper passed nine actual execution tests covering literal strings, Unicode and length limits, invalid input, existing-file protection, empty reports, and CLI round-trips. YAML, local references, and Git whitespace checks also passed. Actual browser/device QA, Excel UI behavior, and host activation of this update remain unverified. See [evaluation guidance](references/evaluation.md) and the dated [host compatibility record](COMPATIBILITY.md).
 
 ## Evidence and limits
 
@@ -112,3 +138,8 @@ For JSON or Excel, request the format explicitly. Actual XLSX creation requires 
 - [Store review](references/store-review.md): policy applicability and currency.
 - [Knowledge retrieval](references/knowledge.md): provenance, conflicts, and feedback records.
 - [Evaluation](references/evaluation.md) and [baseline cases](references/baseline-evaluation-cases.md): maintainer checks.
+
+- [Screenshot evidence](references/screenshots.md): capture and visual inspection states.
+- [Human error patterns](references/human-errors.md): realistic variations and recovery checks.
+- [Tool execution](references/tool-execution.md): platform actions, waits, evidence, and fallback.
+- [XLSX helper](scripts/export_xlsx.py): optional safe workbook export.
