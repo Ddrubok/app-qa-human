@@ -13,6 +13,7 @@ A skill is instructions for an agent, not a standalone QA service. It does not s
 | Capability | Result |
 |---|---|
 | Human-centered exploration | Checks whether a user can find an action, predict its result, understand feedback, and recover |
+| Existing checklists | Executes human or `qa-checklist` cases while retaining IDs, expectations, evidence, and run history |
 | Task completion | Opens downloaded files, reopens saved data, and checks the actual input method |
 | Screenshot evidence | Captures tested states by default; supports `screenshots=on` / `screenshots=off` |
 | PRD/design to test cases | Requirement-linked cases with setup, steps, expectations, and execution status |
@@ -22,6 +23,19 @@ A skill is instructions for an agent, not a standalone QA service. It does not s
 | Comparison with app-qa | Same-condition evaluation guidance and focused synthetic cases |
 
 The default seven areas cover functionality, usability/accessibility, interruptions, exceptions/recovery, data/permissions/privacy, compatibility/performance, and distribution/operations. Supplied company categories take precedence.
+
+## Use an existing checklist
+
+Supply the project's checklist, the build to inspect, and the requested cases. A human-written list works; `qa-checklist` is optional. The skill keeps original notes and previous results, distinguishes implementation progress from verified behavior, and marks changed cases for retesting. A checked box without sufficient evidence does not become a passing test.
+
+```text
+$app-qa-human Execute the signup cases in docs/qa-checklist.md on the test build.
+Preserve case IDs and earlier runs, and append the observed results and evidence.
+```
+
+To review without changing the list, request a report-only review. Preparing a checklist does not start live QA or authorize app changes. See the [handoff contract](references/checklist-handoff.md) and [maintainer regression cases](references/handoff-evaluation.md).
+
+This 2026-11-02 publication includes the locally installed checklist handoff instructions. The evaluation results dated 2026-10-19 below describe the earlier version; they are not a new behavior evaluation of these additions. This publication checks document structure, references, and synchronization, not improved QA accuracy or live app execution.
 
 ## Codex, Claude Code, and Gemini CLI
 

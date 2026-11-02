@@ -12,6 +12,8 @@ For execution QA, use [Task completion](task-completion.md). Put the user's comp
 
 Use `schema_version: "2.0"` for this core/extended representation. Preserve existing field names; do not silently migrate a consumer expecting the old complete schema. If an external contract requires every field, provide it, using null/unknown rather than fabricated values.
 
+When generating cases for an ongoing project checklist or consuming an existing one, apply [Checklist handoff](checklist-handoff.md). Preserve IDs, implementation state and prior runs. Its optional `checklist_verification`/`applicability` fields represent retest needs without adding `retest` to the existing execution status enum. A strict consumer receives a linked companion record when it cannot accept these extensions. Checklist creation alone does not execute tests.
+
 At run level record `scope, environment, sources, assumptions, coverage, limitations`. State mode, evidence origin and effective screenshot option where applicable. Case/finding environment can refer to this shared environment; override only differing conditions. Source IDs must resolve to actual supplied or inspected sources.
 
 **Case core:** `id, title, preconditions, steps, expected_results, expectation_basis, priority, status, actual_result, evidence_refs` plus a resolvable environment reference. Core is enough to reproduce the case and judge its outcome.
