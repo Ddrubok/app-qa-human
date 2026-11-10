@@ -1,6 +1,6 @@
 # Product experience QA — <campaign / build>
 
-> Template only. Replace placeholders and include only actual observations. Link each run's canonical report and evidence. A small review may inline these fields.
+> Optional experience template, not the ordinary QA default. Replace placeholders and include only actual observations. Separately identify attempts; their canonical records may share this Markdown file (use anchors/IDs), with evidence linked beside them. A single-profile review may inline the relevant fields without creating a campaign or JSON companion.
 
 ## Scope and execution
 

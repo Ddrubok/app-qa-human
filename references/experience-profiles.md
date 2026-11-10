@@ -4,7 +4,7 @@ Use for live product QA and level comparisons. Keep evidence standards constant;
 
 ## Select a useful scope
 
-Treat `profile=L0|L1|L2|Lapsed|compare` as natural-language request shorthand, not a CLI parser or installed runner. Honor equivalent wording and existing narrow requests. Default an unspecified exploratory review to L0, with its actual knowledge limits disclosed. A checklist, regression test or supplied route remains guided execution; do not replace it with a new campaign. `mode=quick|full` still controls report depth, independently of profile and format.
+Treat `profile=L0|L1|L2|Lapsed|compare` as natural-language request shorthand, not a CLI parser or installed runner. Use this protocol when a profile, first-time discovery, learning or experience comparison is requested. Ordinary QA defaults to one compact pass without an independent-cold claim or required experience record. If a first-time perspective is requested without a level, select L0 and disclose knowledge limits. A checklist, regression test or supplied route remains guided execution; do not replace it with a new campaign. `mode=quick|full` controls report depth, independently of profile and format.
 
 | Profile | Allowed starting knowledge | Behavior and focus |
 |---|---|---|
@@ -38,6 +38,8 @@ Record boundary status independently of functional case status:
 - `informed`: product information or a prescribed route was known before execution. Continue useful guided testing; exclude it from cold-discovery counts.
 - `contaminated`: a claimed isolated attempt received prohibited information after starting. Freeze the affected record; any clean replacement gets a new run ID. Later functional checks may still be useful, but do not restore cold validity by assertion.
 - `unverified`: context/tool isolation could not be established. Continue supported checks with the limitation, not a claimed cold result.
+
+For a single L0 Markdown check, a brief boundary/basis note, actual outcome, help used and evidence can be sufficient. Structured experience fields and a campaign ledger are needed only when requested by a consumer or when carrying/comparing experience. Separately identified attempts may live in one report; an external hint still preserves the unassisted attempt and a linked assisted attempt.
 
 For **visual discovery**, give current viewport images and ordinary visible cues. Do not expose hidden/offscreen DOM, source, full-page text extraction, internal route names, console/network results or backend state. Use normal pointer, scrolling, keyboard and touch actions; do not force-click through overlays or invoke handlers. Accessibility testing may use the actual assistive surface and must be labeled `observation_mode=assistive`, not evidence that the same control was visually discoverable. Guided execution may use robust locators and diagnostic tools.
 

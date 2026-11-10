@@ -4,7 +4,7 @@ Produce a review the user can act on: what fails, under which conditions, how it
 
 ## Scope and evidence
 
-- Identify the actual project, platform, build, and important user journeys. Honor applicable project instructions. For experience-level QA, apply [Experience profiles](experience-profiles.md) before loading product knowledge: the coordinator reads requirements and old QA/fix reports for setup/adjudication, not into a cold participant's context. If mandatory project instructions expose product knowledge, mark that attempt informed; never ignore higher-priority instructions to manufacture isolation. Reconcile old issues only after freezing the experience record.
+- Identify the actual project, platform, build, and important user journeys. Honor project instructions. Ordinary functional QA may read relevant requirements and old reports without creating an experience campaign. For a requested first-time/experience claim, apply [Experience profiles](experience-profiles.md) before loading product knowledge: keep requirements, old findings and routes with the coordinator, not a cold participant. If mandatory instructions expose product knowledge, label the attempt informed; never ignore higher-priority instructions to manufacture isolation.
 - A QA-only request permits inspection, local checks, and report artifacts; it does not itself request app changes or deployment. If the user also requests fixes, carry out that authorized scope rather than stopping at a report or asking again.
 - Use available test accounts, mocks, or emulators for actions that would create accounts, send messages/mail, charge money, submit reports, or delete data. Do not treat a live product review as authorization for those effects. Mocked success demonstrates only the mocked portion of the flow.
 - Before a check with side effects, verify the actual server, data store, external services, and permitted targets from available configuration and existing authorization. A test account or emulator does not prove isolation. If the boundary is unclear, defer that action and continue independent checks; do not ask again for authorization already established.
@@ -71,6 +71,8 @@ Keep the existing `severity` and `priority` keys for compatibility; clarify the 
 ## Deliverable
 
 For a substantial review, write a Markdown report in the project's existing report location or a clearly named QA file. Avoid overwriting a prior review's evidence. A short review can be delivered inline.
+
+For a small one-off check, share environment/limits once and record the goal, expected basis, actual actions/outcome, evidence and remaining check. Do not require profile ledgers, campaign IDs or a new JSON file unless requested. This reduces presentation and setup overhead, not completion, privacy, reproduction or cleanup standards.
 
 Include:
 

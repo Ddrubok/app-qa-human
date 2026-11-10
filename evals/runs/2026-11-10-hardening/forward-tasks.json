@@ -1,0 +1,52 @@
+{
+  "source_label": "Synthetic maintainer records for report-only use; not a live execution trace.",
+  "task_a": {
+    "request": "다음 전달 기록으로 메모 저장·다시 열기 QA 결과를 짧게 정리해줘. 새 실행이나 수정은 하지 말고 Markdown으로 답해줘. screenshots=off.",
+    "target": "Memo demo build A, desktop Chrome; supplier recorded steps below, agent has not run the app",
+    "records": [
+      {
+        "id": "A1",
+        "step": "제품 도움말",
+        "text": "Save stores the note for your next visit."
+      },
+      {
+        "id": "A2",
+        "step": "빈 계정에서 제목 sample, 본문 alpha 입력 후 Save 클릭",
+        "text": "Saved 토스트 표시; 편집기에 alpha 표시"
+      },
+      {
+        "id": "A3",
+        "step": "브라우저 새로고침 후 sample 열기",
+        "text": "본문이 비어 있음"
+      },
+      {
+        "id": "A4",
+        "step": "새 제목 sample2와 본문 beta로 같은 순서 재시도",
+        "text": "Saved 표시 후 새로고침하면 본문이 비어 있음"
+      }
+    ],
+    "limits": "서버/코드/네트워크 기록 없음; 사진 없음; 기록 제공자는 합성 시나리오 작성자"
+  },
+  "task_b": {
+    "request": "아래 기록을 이용해 첫 사용자·재방문·숙련 관점의 차이를 비교해줘. profile=compare. 실제로 실행된 것과 아직 없는 근거를 구분해줘. 새 실행은 하지 말아줘.",
+    "target": "Game demo build G, same desktop and keyboard for supplied attempts",
+    "records": [
+      {
+        "id": "B1",
+        "run": "R1",
+        "text": "중립 목표: 한 라운드를 마치기. 초기 게임 상태. 컨텍스트 분리 확인 기록은 없음. 화면에서 조작을 찾다가 종료. 플레이 입력·라운드 결과에 도달하지 못함."
+      },
+      {
+        "id": "B2",
+        "run": "R2",
+        "text": "R1 이후 외부 진행자가 Space로 시작한다고 알려줌. Space 입력→플레이 입력→라운드 결과→재시작 화면까지 기록됨. 소스/PRD는 전달 안 함."
+      },
+      {
+        "id": "B3",
+        "run": "R3",
+        "text": "R2 다음 재방문. 이전에 배운 Space 사용. 같은 게임 상태에서 라운드 완료 및 재시작 성공. 고급 조합·전략 선택·다른 상황 전이는 기록 없음."
+      }
+    ],
+    "limits": "이 기록만 있음. 실제 스크린샷·시간측정·독립 사용자 표본 없음."
+  }
+}

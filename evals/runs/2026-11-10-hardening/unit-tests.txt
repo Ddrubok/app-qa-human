@@ -1,0 +1,23 @@
+test_assistance_preserves_link (test_experience.ExperienceTests.test_assistance_preserves_link) ... ok
+test_blocked_plan_does_not_require_invented_experience (test_experience.ExperienceTests.test_blocked_plan_does_not_require_invented_experience) ... ok
+test_case_evidence_members_are_registered_nonempty_strings (test_experience.ExperienceTests.test_case_evidence_members_are_registered_nonempty_strings) ... ok
+test_cli_roundtrip_does_not_modify_input (test_experience.ExperienceTests.test_cli_roundtrip_does_not_modify_input) ... ok
+test_cold_boundary_requires_evidence (test_experience.ExperienceTests.test_cold_boundary_requires_evidence) ... ok
+test_export_preserves_experience_and_literal_knowledge (test_experience.ExperienceTests.test_export_preserves_experience_and_literal_knowledge) ... ok
+test_finding_evidence_references (test_experience.ExperienceTests.test_finding_evidence_references) ... ok
+test_guided_l0_not_cold (test_experience.ExperienceTests.test_guided_l0_not_cold) ... ok
+test_hidden_assistance_and_missing_help_evidence (test_experience.ExperienceTests.test_hidden_assistance_and_missing_help_evidence) ... ok
+test_invalid_evidence_cli_exit_codes (test_experience.ExperienceTests.test_invalid_evidence_cli_exit_codes) ... ok
+test_malformed_extension_is_clear_error (test_experience.ExperienceTests.test_malformed_extension_is_clear_error) ... ok
+test_new_learning_and_duplicate_ids (test_experience.ExperienceTests.test_new_learning_and_duplicate_ids) ... ok
+test_observed_repeat_and_unearned_experience (test_experience.ExperienceTests.test_observed_repeat_and_unearned_experience) ... ok
+test_registered_case_evidence_and_source_id_alias (test_experience.ExperienceTests.test_registered_case_evidence_and_source_id_alias) ... ok
+test_seeded_and_mixed_provenance (test_experience.ExperienceTests.test_seeded_and_mixed_provenance) ... ok
+test_unexecuted_or_unsupported_pass (test_experience.ExperienceTests.test_unexecuted_or_unsupported_pass) ... ok
+test_unexecuted_template_and_legacy (test_experience.ExperienceTests.test_unexecuted_template_and_legacy) ... ok
+test_unresolved_and_missing_prior_references (test_experience.ExperienceTests.test_unresolved_and_missing_prior_references) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.290s
+
+OK

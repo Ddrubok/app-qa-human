@@ -43,6 +43,8 @@ def validate(report, require_experience=False):
     source_ids = set()
     for source in seq(report.get('sources'), 'sources'):
         obj(source, 'source')
+        if 'id' in source and 'source_id' in source:
+            check(source['id'] == source['source_id'], 'source id and source_id disagree')
         source_id = text(source.get('id', source.get('source_id')), 'source ID')
         check(source_id not in source_ids, 'duplicate source ID: ' + source_id)
         source_ids.add(source_id)
@@ -123,15 +125,19 @@ def validate(report, require_experience=False):
         case_ids.add(case_id)
         status = case.get('status')
         choice(status, ('not-run', 'passed', 'failed', 'blocked', 'not-applicable'), 'case status')
-        evidence = seq(case.get('evidence_refs'), 'case evidence_refs')
+        evidence = refs(case.get('evidence_refs'), 'case evidence_refs', status in ('passed', 'failed'))
         if status in ('passed', 'failed'):
-            check(bool(evidence), 'executed pass/fail needs evidence')
             check(case.get('actual_result') not in (None, '', [], {}), 'executed pass/fail needs actual_result')
         if status == 'not-run':
             check(case.get('actual_result') is None and not evidence, 'not-run cannot carry execution results')
         executed = executed or status in ('passed', 'failed')
     if executed and exp['profile'] != 'L0':
         check(exp['experience_basis'] != 'none', 'executed experienced profile needs prior knowledge')
+    for finding in seq(report.get('findings', []), 'findings'):
+        obj(finding, 'finding')
+        level = finding.get('evidence_level')
+        choice(level, ('reproduced', 'code-confirmed', 'needs-verification'), 'finding evidence_level')
+        refs(finding.get('evidence_refs'), 'finding evidence_refs', level != 'needs-verification')
     return {'extension': '1.0', 'run_id': exp['run_id'], 'validation': 'record consistency only; execution and isolation not verified'}
 
 

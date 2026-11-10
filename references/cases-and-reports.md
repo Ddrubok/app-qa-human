@@ -1,5 +1,7 @@
 # Test cases and defect normalization
 
+Read this contract for structured/full reports, generated cases or supplied-report processing. Ordinary small Markdown QA uses SKILL.md's compact report and does not need an experience object or a separate file. Preserve the same evidence and outcome standards.
+
 ## Generate executable cases
 
 Extract versioned requirement IDs and explicit acceptance criteria before generating cases. For design-only input, identify visible behavior and list missing interactions as assumptions/questions. Never convert a guessed business rule into a requirement. Use seven-area coverage from SKILL.md, boundary values, equivalence classes, and state transitions where they reduce missed risk. Add pairwise combinations only for interacting dimensions, not an exhaustive cross product.
@@ -33,9 +35,11 @@ Screenshot lifecycle and coverage follow [Screenshot evidence](screenshots.md). 
 
 For direct experience QA use [Experience profiles](experience-profiles.md) and the optional `experience` extension 1.0 in [Session memory](session-memory.md). Keep `schema_version: "2.0"`, case/finding cores and all existing status enums. Legacy reports without the extension remain valid. Strict consumers receive a linked companion record rather than unexpected keys.
 
-Write one run report per attempt, retaining stable case IDs across runs. A campaign comparison links these reports by run ID; never overwrite an L0 failure with an L2 success. Preserve external assistance as a separate linked attempt and record knowledge boundary independently of task status. An informed run may verify a functional outcome without proving cold discoverability. A passed task may have evidenced usability friction. Record proposed expectations separately from confirmed requirement mismatches.
+Keep separately identified records per attempt, retaining stable case IDs across runs; they may share one Markdown report. A campaign comparison links records by run ID; never overwrite an L0 failure with an L2 success. Preserve external assistance as a separate linked attempt and record knowledge boundary independently of task status. An informed run may verify a functional outcome without proving cold discoverability. A passed task may have evidenced usability friction. Record proposed expectations separately from confirmed requirement mismatches.
 
 Use [experience-report.md](../templates/experience-report.md) and the unexecuted [experience-run.json](../templates/experience-run.json). For extension references use IDs in `sources` (`id` or `source_id`) that resolve to actual setup, observations, supplied knowledge or prior reports. `python scripts/validate_experience.py report.json` checks extension consistency; add `--require-experience` when it is required. This does not certify execution, cold isolation, report accuracy or physical-device behavior.
+
+In a report carrying `experience`, every case/finding `evidence_refs` item must also be a nonempty string naming a registered source ID. Null, numbers, objects, empty strings and unknown IDs are invalid even on blocked/uncertain records. Passed/failed cases and reproduced/code-confirmed findings need at least one reference; needs-verification findings may use an empty list. Register a file/URL in `sources` and refer to its ID; the checker does not open files, retrieve URLs or certify source truth. Legacy reports without the extension are skipped explicitly, not certified. Conflicting `id` and `source_id` on one source are rejected.
 
 Report goal completion, discovered help, backtracks/retries, unresolved confusion and learning per run when observed. State denominators and intentional state differences; do not infer causal superiority from unmatched builds/roles or treat linked learning sessions as independent users. Unknown measurements stay null. Do not convert tool/model elapsed time into human speed or AI outcomes into human success rates.
 

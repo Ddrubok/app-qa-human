@@ -1,0 +1,26 @@
+{
+  "previous": {
+    "task_a": {
+      "criteria_met": 5,
+      "criteria_total": 5
+    },
+    "task_b": {
+      "criteria_met": 5,
+      "criteria_total": 5
+    },
+    "read_files_reported": 9
+  },
+  "candidate": {
+    "task_a": {
+      "criteria_met": 5,
+      "criteria_total": 5
+    },
+    "task_b": {
+      "criteria_met": 5,
+      "criteria_total": 5
+    },
+    "read_files_reported": 6
+  },
+  "method": "Two fresh non-forked agents, same supplied synthetic tasks; each handled A then B. Inherited model/configuration, exact backend identifier unavailable. Coordinator graded raw outputs against frozen criteria; no independent or human judge.",
+  "limits": "Both met all criteria; no detected reporting regression in this sample and no demonstrated accuracy gain. File counts cover both tasks together, not the ordinary-live path. No live product action, timing or human behavior measured."
+}
