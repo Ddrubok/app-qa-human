@@ -1,0 +1,57 @@
+[
+  {
+    "evidence_refs": [],
+    "accepted": false,
+    "message": "case evidence_refs needs evidence references"
+  },
+  {
+    "evidence_refs": [
+      null
+    ],
+    "accepted": false,
+    "message": "case evidence_refs reference must be nonempty text"
+  },
+  {
+    "evidence_refs": [
+      "UNREGISTERED"
+    ],
+    "accepted": false,
+    "message": "case evidence_refs unresolved reference: UNREGISTERED"
+  },
+  {
+    "evidence_refs": [
+      ""
+    ],
+    "accepted": false,
+    "message": "case evidence_refs reference must be nonempty text"
+  },
+  {
+    "evidence_refs": [
+      7
+    ],
+    "accepted": false,
+    "message": "case evidence_refs reference must be nonempty text"
+  },
+  {
+    "evidence_refs": [
+      {}
+    ],
+    "accepted": false,
+    "message": "case evidence_refs reference must be nonempty text"
+  },
+  {
+    "evidence_refs": [
+      "OBS"
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      "OBS",
+      null
+    ],
+    "accepted": false,
+    "message": "case evidence_refs reference must be nonempty text"
+  }
+]

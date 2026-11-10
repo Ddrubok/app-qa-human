@@ -1,0 +1,34 @@
+[
+  {
+    "path": "templates/experience-run.json",
+    "result": {
+      "extension": "1.0",
+      "run_id": "RUN-PLAN",
+      "validation": "record consistency only; execution and isolation not verified"
+    }
+  },
+  {
+    "path": "evals/runs/2026-11-10/live/L0-01.json",
+    "result": {
+      "extension": "1.0",
+      "run_id": "RUN-LIVE-L0-01",
+      "validation": "record consistency only; execution and isolation not verified"
+    }
+  },
+  {
+    "path": "evals/runs/2026-11-10/live/L1-01.json",
+    "result": {
+      "extension": "1.0",
+      "run_id": "RUN-LIVE-L1-01",
+      "validation": "record consistency only; execution and isolation not verified"
+    }
+  },
+  {
+    "path": "evals/runs/2026-11-10/live/L2-01.json",
+    "result": {
+      "extension": "1.0",
+      "run_id": "RUN-LIVE-L2-01",
+      "validation": "record consistency only; execution and isolation not verified"
+    }
+  }
+]

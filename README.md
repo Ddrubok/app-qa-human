@@ -20,7 +20,14 @@ Keep QA evidence standards constant while changing product familiarity. The same
 | `Lapsed` returning after change | Versioned earlier knowledge | Can the user adapt and recover their progress? |
 | `compare` | A campaign of separately recorded profile attempts | What changes with the declared knowledge and state? |
 
-`profile=...` is request shorthand read by the agent, not a shell command or parser. Default exploratory QA starts with L0; narrow checklist/report requests do not expand into campaigns. `mode=quick|full` still controls report depth. L2 is not earned by a fixed number of runs, and seeded knowledge is never reported as actual prior use.
+Ordinary QA defaults to **one scoped pass and a compact Markdown report**: goal/expectation, actions/result, evidence and remaining checks. No experience ledger, campaign IDs or seven-area matrix is required. Relevant prior knowledge or hints still need a brief note; a functional check is not automatically a certified cold-user study.
+
+```text
+$app-qa-human Check saving and reopening a note directly.
+Report the actual result, evidence and untested scope concisely.
+```
+
+Use `profile=...` for explicit discoverability, learning or experience-level questions. This is request shorthand, not a shell command or parser. `mode=quick|full` controls report depth; full alone does not request multiple profiles. L2 is not earned by a fixed number of runs, and seeded knowledge is never reported as actual prior use. An optional comparison request is:
 
 ```text
 $app-qa-human profile=compare Test this product directly.
@@ -42,7 +49,7 @@ python scripts/validate_experience.py report.json --require-experience
 python -m unittest discover -s tests -v
 ```
 
-The validator checks record consistency, not actual execution, isolation or user satisfaction. No new runtime dependencies are required; the existing XLSX export still optionally uses `openpyxl`. See [experience acceptance checks](references/experience-evaluation.md) and [the development validation record](evals/2026-11-10-experience.md) for the exact tested scope and limitations.
+For experience-bearing reports, the validator rejects null/blank/non-string evidence items and unresolved source IDs in cases and findings. Passing/failing cases and confirmed findings require registered evidence. Reports without the extension are explicitly skipped unless `--require-experience` is set. It checks record consistency, not evidence-file existence, actual execution, isolation or user satisfaction. No new runtime dependencies are required; XLSX export still optionally uses `openpyxl`. See [experience acceptance checks](references/experience-evaluation.md), [initial validation](evals/2026-11-10-experience.md), and [evidence/routing hardening](evals/2026-11-10-hardening.md) for tested scope and limits.
 
 ## What it does
 
@@ -60,7 +67,7 @@ The validator checks record consistency, not actual execution, isolation or user
 | Company knowledge retrieval | Source/version-aware retrieval of standards and past defects |
 | Comparison with app-qa | Same-condition evaluation guidance and focused synthetic cases |
 
-The default seven areas cover functionality, usability/accessibility, interruptions, exceptions/recovery, data/permissions/privacy, compatibility/performance, and distribution/operations. Supplied company categories take precedence.
+Full reports use seven default areas: functionality, usability/accessibility, interruptions, exceptions/recovery, data/permissions/privacy, compatibility/performance, and distribution/operations. Compact reports cover the requested scope without a mandatory matrix. Supplied company categories take precedence.
 
 ## Use an existing checklist
 

@@ -13,6 +13,7 @@ When inspection is available, open the saved file and check state, legibility an
 When a safe capture is saved but image inspection is unavailable, retain its path with `visual_review=unavailable` and label **Image file created (unverified visually by agent)**. It may be linked as an uninspected artifact, never as visual proof. Continue DOM/accessibility/text/log/file checks. Block or leave untested only the visual-dependent portion; do not fail an otherwise verified functional outcome because no viewer exists. Do not claim visibility, clipping, contrast or appearance from DOM text alone.
 
 Record per image: `path, case_ids, step, capture_status, visual_review, evidence_origin, proves, limitations`.
+These are evidence semantics, not mandatory separate JSON objects. For a small Markdown check, a caption/link may provide path, step/purpose and inspected/uninspected status while inheriting shared origin and limitations from the report. Keep missing or unusable captures explicit; do not duplicate identical metadata for every image.
 - capture_status: saved / unavailable / not-run / disabled.
 - visual_review: verified / unavailable / not-run / unusable.
 - Run screenshot coverage: complete / partial / unavailable / disabled / not-run; document-only work is not-applicable. Complete requires all required saved images to be inspected and usable. Saved-but-uninspected images are partial, not complete. A capture plan is not-run.

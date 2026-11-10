@@ -1,4 +1,4 @@
 interface:
   display_name: "app-qa-Human"
-  short_description: "초보·재방문·숙련자 관점으로 앱과 게임을 직접 검증하고 보고하는 QA"
-  default_prompt: "$app-qa-human으로 이 제품을 초보·재방문·숙련자 관점에서 직접 QA하고, 실제 사용 이력과 스크린샷 근거를 구분한 비교 보고서를 작성해주세요."
+  short_description: "앱·게임을 직접 검증하고 필요할 때 경험 수준을 비교하는 QA"
+  default_prompt: "$app-qa-human으로 요청한 핵심 기능을 단일 사용자 관점에서 직접 QA하고, 실제 결과·증거·미검증 범위를 간결하게 보고해주세요."

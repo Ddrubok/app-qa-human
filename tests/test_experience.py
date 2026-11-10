@@ -40,6 +40,7 @@ class ExperienceTests(unittest.TestCase):
         report = planned()
         report['experience']['profile'] = 'L2'
         report['cases'] = observed()['cases']
+        report['sources'] = observed()['sources']
         with self.assertRaisesRegex(ValueError, 'prior knowledge'):
             validate(report)
 
@@ -120,6 +121,64 @@ class ExperienceTests(unittest.TestCase):
                 report['cases'] = [{'id': 'TC', 'status': status, 'actual_result': result, 'evidence_refs': evidence}]
                 with self.assertRaises(ValueError):
                     validate(report)
+
+    def test_case_evidence_members_are_registered_nonempty_strings(self):
+        invalid = [None, '', ' ', 7, True, {}, [], 'UNREGISTERED']
+        for status in ('passed', 'failed', 'blocked', 'not-applicable', 'not-run'):
+            for item in invalid:
+                with self.subTest(status=status, item=item):
+                    report = observed()
+                    case = report['cases'][0]
+                    case.update(status=status, evidence_refs=[item])
+                    if status == 'not-run':
+                        case['actual_result'] = None
+                    with self.assertRaises(ValueError):
+                        validate(report)
+        for value in (None, 'OBS', {'id': 'OBS'}, ['OBS', None], ['OBS', 'UNREGISTERED']):
+            with self.subTest(value=value):
+                report = observed()
+                report['cases'][0]['evidence_refs'] = value
+                with self.assertRaises(ValueError):
+                    validate(report)
+
+    def test_registered_case_evidence_and_source_id_alias(self):
+        report = observed()
+        report['sources'][1] = {'source_id': 'OBS', 'path': 'action-01.json'}
+        validate(report)
+        report['sources'][1]['id'] = 'OTHER'
+        with self.assertRaisesRegex(ValueError, 'disagree'):
+            validate(report)
+
+    def test_finding_evidence_references(self):
+        for level in ('reproduced', 'code-confirmed', 'needs-verification'):
+            for value in ([None], ['UNREGISTERED'], [''], [3], [{}], ['OBS', None]):
+                with self.subTest(level=level, value=value):
+                    report = observed()
+                    report['findings'] = [{'evidence_level': level, 'evidence_refs': value}]
+                    with self.assertRaises(ValueError):
+                        validate(report)
+            report = observed()
+            report['findings'] = [{'evidence_level': level, 'evidence_refs': ['OBS']}]
+            validate(report)
+            report['findings'][0]['evidence_refs'] = []
+            if level == 'needs-verification':
+                validate(report)
+            else:
+                with self.assertRaises(ValueError):
+                    validate(report)
+
+    def test_invalid_evidence_cli_exit_codes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / 'run.json'
+            for value in ([None], ['UNREGISTERED'], ['OBS', None]):
+                with self.subTest(value=value):
+                    report = observed()
+                    report['cases'][0]['evidence_refs'] = value
+                    source.write_text(json.dumps(report), encoding='utf-8')
+                    result = subprocess.run([sys.executable, str(ROOT / 'scripts/validate_experience.py'), str(source)], capture_output=True, text=True)
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn('case evidence_refs', result.stderr)
+                    self.assertNotIn('Traceback', result.stderr)
 
     def test_malformed_extension_is_clear_error(self):
         for key, value in [('profile', []), ('knowledge_before', {}), ('knowledge_boundary', None), ('state', [])]:

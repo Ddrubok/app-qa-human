@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-10",
+  "purpose": "Preflight a public disposable TodoMVC demo before same-app revision comparison",
+  "tool": "cloud Chrome through cua_repl",
+  "requested_url": "https://demo.playwright.dev/todomvc/",
+  "observed_url": "https://demo.playwright.dev/todomvc/",
+  "actions": ["createBrowserTab", "getScreenshot"],
+  "observations": {
+    "title": "Site Unavailable",
+    "accessibility_text": "Site Unavailable\nUnable to access this site.",
+    "screenshot": "Captured, displayed and inspected in tool output; no image file retained in this repository"
+  },
+  "status": "blocked",
+  "product_actions_executed": 0,
+  "revision_comparison": "not-run",
+  "cause": "Unknown; the displayed access failure does not prove an app defect or bot detection",
+  "remaining": "Reach the same frozen product build with supported tools, then execute the comparison protocol"
+}

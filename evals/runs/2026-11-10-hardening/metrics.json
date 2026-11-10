@@ -1,0 +1,252 @@
+{
+  "method": "Python str.split; UTF-8; Markdown syntax and frontmatter included. Ordinary live path means a narrow save/reopen check with familiar tools; conditional references increase other paths. No runtime speed/token claim.",
+  "original": {
+    "skill_words": 1449,
+    "ordinary_live_path": [
+      "SKILL.md",
+      "references/baseline.md",
+      "references/screenshots.md",
+      "references/task-completion.md",
+      "references/tool-execution.md",
+      "references/human-errors.md",
+      "references/cases-and-reports.md"
+    ],
+    "ordinary_live_words": 6514,
+    "all_markdown_words": 12007,
+    "files": {
+      "SKILL.md": {
+        "words": 1449,
+        "sha256": "06134993cde75a6d649261bd11cbc0c79e485ea98268587beda120bae5e3ae11"
+      },
+      "references/baseline-evaluation-cases.md": {
+        "words": 989,
+        "sha256": "737025879f7bf907440df9b7a7e7976484718c69235024a5dc62e608c174fc09"
+      },
+      "references/baseline.md": {
+        "words": 1364,
+        "sha256": "82bf772251c65b3f1bcbcafd4bd46be64432da96ad4aabc087e650b0a1c572c7"
+      },
+      "references/cases-and-reports.md": {
+        "words": 1458,
+        "sha256": "dbb796f9fa55fad44d5d651a8df706477a7043983bc2d3d76029115ba289a287"
+      },
+      "references/checklist-handoff.md": {
+        "words": 1409,
+        "sha256": "5b1b947208f7fd0bbf97f5bfa5b906af66844c2c6b2bf10dde23be66a2d2ef80"
+      },
+      "references/evaluation.md": {
+        "words": 1386,
+        "sha256": "80e68966e15e747bee590f391ab3977dbdbb09c149d9285af44dacea10e4a3ab"
+      },
+      "references/handoff-evaluation.md": {
+        "words": 666,
+        "sha256": "1ada27049ff46f1624c4dc95525b766c725acb9d6122661b1a04470d11d3d7b2"
+      },
+      "references/human-errors.md": {
+        "words": 377,
+        "sha256": "4df44c405e06d0021e7be8ff8e62b5c3466bde7e9655f7697c57e16048964463"
+      },
+      "references/knowledge.md": {
+        "words": 421,
+        "sha256": "1632bd4a67ecb11b7751264fbb22b58324f73b76de49183a4e983ee077d8a66f"
+      },
+      "references/screenshots.md": {
+        "words": 456,
+        "sha256": "a53a9598932ec8a4c0ddf4910a93667b7a9c8732ed60ef3a3441a338dd5a6fd4"
+      },
+      "references/store-review.md": {
+        "words": 622,
+        "sha256": "6504ef70b24509e7859986bda61a5ee1b95a9254c26ec43df10a46ae888eea87"
+      },
+      "references/task-completion.md": {
+        "words": 909,
+        "sha256": "28cf71ab228e089b1b2674088162587c271ea4351f351bd093566d5b1ddca5f4"
+      },
+      "references/tool-execution.md": {
+        "words": 501,
+        "sha256": "9b9f052c31773b7e2b8b7945087388e9026eb4de1fd2e5c920b5a30eed98864f"
+      }
+    }
+  },
+  "previous": {
+    "skill_words": 1620,
+    "ordinary_live_path": [
+      "SKILL.md",
+      "references/baseline.md",
+      "references/screenshots.md",
+      "references/task-completion.md",
+      "references/tool-execution.md",
+      "references/human-errors.md",
+      "references/cases-and-reports.md",
+      "references/experience-profiles.md"
+    ],
+    "ordinary_live_words": 8367,
+    "all_markdown_words": 16606,
+    "files": {
+      "SKILL.md": {
+        "words": 1620,
+        "sha256": "be850fe8dd39ac3962b5895eea9dd54c2ba088ffd99b7f1a214b47401126fb4e"
+      },
+      "references/baseline-evaluation-cases.md": {
+        "words": 989,
+        "sha256": "737025879f7bf907440df9b7a7e7976484718c69235024a5dc62e608c174fc09"
+      },
+      "references/baseline.md": {
+        "words": 1423,
+        "sha256": "fa337ddb6fc0d8ba4bb954fd62a0a4bd3c1f885c245f9d2d751d858d623329d8"
+      },
+      "references/cases-and-reports.md": {
+        "words": 1734,
+        "sha256": "b36f46d5d6ca22fcc32974c6c5824590b67f9cbf2600f14b0e1e162bb5fca26b"
+      },
+      "references/checklist-handoff.md": {
+        "words": 1409,
+        "sha256": "5b1b947208f7fd0bbf97f5bfa5b906af66844c2c6b2bf10dde23be66a2d2ef80"
+      },
+      "references/evaluation.md": {
+        "words": 1411,
+        "sha256": "d3bec3770dca3bc7710d1350a3a66241b584f659daec6e83aa3533bf8a18bf90"
+      },
+      "references/experience-evaluation.md": {
+        "words": 720,
+        "sha256": "29206b1ef23080e5b41c68326787a2e7188faf84be368f9a52e553ff3a6e3a45"
+      },
+      "references/experience-profiles.md": {
+        "words": 1194,
+        "sha256": "5a67e2f33453edf40dd6fc119bc064d0934ef0d9649b82e42ad986b40cef02b7"
+      },
+      "references/gameplay.md": {
+        "words": 598,
+        "sha256": "9c02ad722e825a9f1d5c6cef004c5faa6e8e3e4bbc425f9f7f308068dae60a4d"
+      },
+      "references/handoff-evaluation.md": {
+        "words": 666,
+        "sha256": "1ada27049ff46f1624c4dc95525b766c725acb9d6122661b1a04470d11d3d7b2"
+      },
+      "references/human-errors.md": {
+        "words": 377,
+        "sha256": "4df44c405e06d0021e7be8ff8e62b5c3466bde7e9655f7697c57e16048964463"
+      },
+      "references/knowledge.md": {
+        "words": 481,
+        "sha256": "14c4814cd74fbcdbacf5cfc0ae15e50c7541f30952bdc8eab4d78c087a1f1c89"
+      },
+      "references/participant.md": {
+        "words": 319,
+        "sha256": "2d596662fd3726e659932bb5fc8624e09a8fe9d3c5dc18cf36d3b3a70a07876c"
+      },
+      "references/screenshots.md": {
+        "words": 456,
+        "sha256": "a53a9598932ec8a4c0ddf4910a93667b7a9c8732ed60ef3a3441a338dd5a6fd4"
+      },
+      "references/session-memory.md": {
+        "words": 721,
+        "sha256": "132eeb8983e562ced1f8c4d2594f0b87e11d2ea25a8ca4fcf0c0550ff5eded8e"
+      },
+      "references/store-review.md": {
+        "words": 622,
+        "sha256": "6504ef70b24509e7859986bda61a5ee1b95a9254c26ec43df10a46ae888eea87"
+      },
+      "references/task-completion.md": {
+        "words": 921,
+        "sha256": "feeeb119623a495f4c4b0401b0ad0ef1400aba42d7654eeffcf352e34e9121b4"
+      },
+      "references/tool-execution.md": {
+        "words": 642,
+        "sha256": "e094fabacf90ab5ba488c0e0e54fc065764169242f1c469ac58e7f725a082bc4"
+      },
+      "templates/experience-report.md": {
+        "words": 303,
+        "sha256": "2f6a76979f4a1e12b5d678893678b627358c1a156164a858f5495c74dfb016ac"
+      }
+    }
+  },
+  "candidate": {
+    "skill_words": 1093,
+    "ordinary_live_path": [
+      "SKILL.md",
+      "references/baseline.md",
+      "references/screenshots.md"
+    ],
+    "ordinary_live_words": 3068,
+    "all_markdown_words": 16429,
+    "files": {
+      "SKILL.md": {
+        "words": 1093,
+        "sha256": "c7d52f2de0f85a2403dc3f48a042efa81b62254b5f6f9a2e3fd104dd31ccdfd4"
+      },
+      "references/baseline-evaluation-cases.md": {
+        "words": 989,
+        "sha256": "737025879f7bf907440df9b7a7e7976484718c69235024a5dc62e608c174fc09"
+      },
+      "references/baseline.md": {
+        "words": 1473,
+        "sha256": "1c1779b22d84d31efc7edf62734f052f68a6a3f58a6da84650d903329a5664ef"
+      },
+      "references/cases-and-reports.md": {
+        "words": 1868,
+        "sha256": "9cfcad582a7ba44019f95c147e3a72adb0a0a24323e4625e7b414ea74b18ebfc"
+      },
+      "references/checklist-handoff.md": {
+        "words": 1409,
+        "sha256": "5b1b947208f7fd0bbf97f5bfa5b906af66844c2c6b2bf10dde23be66a2d2ef80"
+      },
+      "references/evaluation.md": {
+        "words": 1411,
+        "sha256": "d3bec3770dca3bc7710d1350a3a66241b584f659daec6e83aa3533bf8a18bf90"
+      },
+      "references/experience-evaluation.md": {
+        "words": 720,
+        "sha256": "29206b1ef23080e5b41c68326787a2e7188faf84be368f9a52e553ff3a6e3a45"
+      },
+      "references/experience-profiles.md": {
+        "words": 1276,
+        "sha256": "b2631518fb5be75c085d6249daa0bfa505818da02091540a0d478b933936c5e6"
+      },
+      "references/gameplay.md": {
+        "words": 598,
+        "sha256": "9c02ad722e825a9f1d5c6cef004c5faa6e8e3e4bbc425f9f7f308068dae60a4d"
+      },
+      "references/handoff-evaluation.md": {
+        "words": 666,
+        "sha256": "1ada27049ff46f1624c4dc95525b766c725acb9d6122661b1a04470d11d3d7b2"
+      },
+      "references/human-errors.md": {
+        "words": 377,
+        "sha256": "4df44c405e06d0021e7be8ff8e62b5c3466bde7e9655f7697c57e16048964463"
+      },
+      "references/knowledge.md": {
+        "words": 481,
+        "sha256": "14c4814cd74fbcdbacf5cfc0ae15e50c7541f30952bdc8eab4d78c087a1f1c89"
+      },
+      "references/participant.md": {
+        "words": 319,
+        "sha256": "2d596662fd3726e659932bb5fc8624e09a8fe9d3c5dc18cf36d3b3a70a07876c"
+      },
+      "references/screenshots.md": {
+        "words": 502,
+        "sha256": "586418ad886d9c09a22210dd0b04141116c95b21dc12d13373c23e063125045d"
+      },
+      "references/session-memory.md": {
+        "words": 734,
+        "sha256": "83e8472dfa7a451b00be322fef8c86ca8f4becf072ab6f43efa5cecd713628a7"
+      },
+      "references/store-review.md": {
+        "words": 622,
+        "sha256": "6504ef70b24509e7859986bda61a5ee1b95a9254c26ec43df10a46ae888eea87"
+      },
+      "references/task-completion.md": {
+        "words": 921,
+        "sha256": "feeeb119623a495f4c4b0401b0ad0ef1400aba42d7654eeffcf352e34e9121b4"
+      },
+      "references/tool-execution.md": {
+        "words": 642,
+        "sha256": "e094fabacf90ab5ba488c0e0e54fc065764169242f1c469ac58e7f725a082bc4"
+      },
+      "templates/experience-report.md": {
+        "words": 328,
+        "sha256": "c54f4939c029078055c49300b628ae0992576103f2e1262872c5ca43dbd1b44a"
+      }
+    }
+  }
+}

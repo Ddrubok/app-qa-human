@@ -1,0 +1,57 @@
+[
+  {
+    "evidence_refs": [],
+    "accepted": false,
+    "message": "executed pass/fail needs evidence"
+  },
+  {
+    "evidence_refs": [
+      null
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      "UNREGISTERED"
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      ""
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      7
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      {}
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      "OBS"
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  },
+  {
+    "evidence_refs": [
+      "OBS",
+      null
+    ],
+    "accepted": true,
+    "message": "record consistency only; execution and isolation not verified"
+  }
+]

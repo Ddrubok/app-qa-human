@@ -14,7 +14,7 @@ Record knowledge entries as `id, claim, origin, source_refs, learned_in_run, bui
 
 ## Run the sequence
 
-1. Assign stable campaign/run IDs and keep case IDs stable across attempts. Each profile attempt has its own report; the campaign summary links them rather than flattening different outcomes into one case status.
+1. Assign stable campaign/run IDs and keep case IDs stable across attempts. Give each attempt a separate logical record; several records may share one Markdown file or table. Separate JSON files are optional unless the consumer requires them. Never flatten different outcomes into one case status.
 2. For L0 declare the starting user/data state: fresh, retained, seeded or unknown. Preserve intended first-use onboarding. A seeded demonstration is not an empty new account. Never clear a real user's storage or server data to manufacture a cold state.
 3. After the attempt freezes, write `knowledge_after` with newly encountered user-visible learning. Include only evidence-backed facts; preserve unresolved misunderstandings separately. Record completed and incomplete tasks and the state left behind.
 4. For L1 import selected prior learning as `knowledge_before` and link the prior report in `previous_run_refs`. Reopen the product and verify actual saved state; a memory file does not prove the product saved anything. Prior use may have failed: record that history honestly.
