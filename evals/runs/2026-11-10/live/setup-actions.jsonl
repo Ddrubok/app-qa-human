@@ -1,0 +1,4 @@
+{"id": "SETUP-01", "action": "기존 Python Playwright로 설치된 Chromium headless 실행", "outcome": "브라우저 시작 실패", "evidence": "BrowserType.launch TargetClosedError; socket() failed: Operation not permitted (1)", "product_observed": false}
+{"id": "SETUP-02", "action": "클라우드 Browser에서 지정 localhost URL 열기", "outcome": "접속 실패", "evidence": "net::ERR_CONNECTION_REFUSED", "product_observed": false}
+{"id": "SETUP-03", "action": "기본 exec 소켓 capability 검사", "outcome": "AF_UNIX 생성 EPERM; AF_INET 생성 가능", "product_observed": false}
+{"id": "SETUP-04", "action": "기본 exec에서 localhost:8765 TCP 연결 검사", "outcome": "ECONNREFUSED", "product_observed": false}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "2.0",
+  "scope": "TEMPLATE: replace with a neutral user outcome before execution",
+  "environment": {"id": "ENV-PLAN", "build": null, "platform": null},
+  "sources": [],
+  "assumptions": [],
+  "cases": [],
+  "findings": [],
+  "coverage": [],
+  "limitations": ["Unexecuted template; no runtime or isolation evidence."],
+  "experience": {
+    "contract_version": "1.0",
+    "campaign_id": "CAMPAIGN-PLAN",
+    "run_id": "RUN-PLAN",
+    "profile": "L0",
+    "experience_basis": "none",
+    "previous_run_refs": [],
+    "knowledge_boundary": {
+      "status": "unverified",
+      "observation_mode": "visual",
+      "basis_refs": [],
+      "exposures": []
+    },
+    "state": {"setup": "unknown", "description": "Not prepared", "evidence_refs": []},
+    "assistance": {"external": false, "events": []},
+    "knowledge_before": [],
+    "knowledge_after": [],
+    "unresolved": []
+  }
+}

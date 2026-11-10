@@ -2,6 +2,8 @@
 
 Use available approved company QA standards, requirement versions, design guidance and sanitized historical defects. No company knowledge has been supplied merely because this skill is installed. Missing seven-area definitions use the explicitly labeled default taxonomy in SKILL.md.
 
+For experience-level QA, this retrieval belongs to preparation or diagnosis. Follow [Experience profiles](experience-profiles.md): do not pass company knowledge, past findings, routes or root causes to a cold participant. User learning is a separate record in [Session memory](session-memory.md), sourced only from what that participant encountered or explicitly received as declared prior knowledge. An approved QA lesson is not automatically user knowledge.
+
 Start with file search and exact source excerpts for a small corpus. If an existing authorized RAG service is available, query it. Build a vector database only for an explicit infrastructure task or a demonstrated retrieval need with an agreed scope; installing this skill does not create a RAG service.
 
 Retrieval procedure:

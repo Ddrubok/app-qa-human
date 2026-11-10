@@ -2,16 +2,54 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
-**An AI agent skill for reviewing an app through a person's goals, mistakes, interruptions, and recovery.**
+**An AI agent skill that directly tests apps, websites and games from first-time, returning and practiced user perspectives, then writes an evidence-based report.**
 
 This is a separate alternative to [app-qa](https://github.com/Ddrubok/app-qa). It keeps the original evidence standards and adds exploratory journeys, requirement-linked test cases, bug report normalization, and store review risk checks. Both skills can be installed so you can compare them explicitly.
 
-A skill is instructions for an agent, not a standalone QA service. It does not simulate real research participants or automatically connect to your app, company knowledge base, or issue tracker.
+A skill is instructions for an agent, not a standalone QA service or representative human study. Available browser/device/native tools determine what it can actually operate. It does not automatically connect to your product, company knowledge base or issue tracker.
+
+## Experience levels and direct use
+
+Keep QA evidence standards constant while changing product familiarity. The same agent may run a learning sequence; independent cold participants require verified context isolation. A fresh browser alone is insufficient. Existing checklist routes remain guided checks.
+
+| Profile | Starting knowledge | Main question |
+|---|---|---|
+| `L0` first-time | Neutral goal and visibly discovered product facts | Can the user find a start and complete a useful task? |
+| `L1` returning | Prior user-visible learning, including failed attempts | Can the user reuse what they learned and reopen/resume work? |
+| `L2` practiced | Demonstrated relevant proficiency or explicitly seeded knowledge | Are repeated/combined workflows efficient and consistent? |
+| `Lapsed` returning after change | Versioned earlier knowledge | Can the user adapt and recover their progress? |
+| `compare` | A campaign of separately recorded profile attempts | What changes with the declared knowledge and state? |
+
+`profile=...` is request shorthand read by the agent, not a shell command or parser. Default exploratory QA starts with L0; narrow checklist/report requests do not expand into campaigns. `mode=quick|full` still controls report depth. L2 is not earned by a fixed number of runs, and seeded knowledge is never reported as actual prior use.
+
+```text
+$app-qa-human profile=compare Test this product directly.
+Run first-time, returning and practiced-user tasks where the evidence supports them.
+Preserve first attempts, learning, assistance and product state; write a Markdown comparison.
+```
+
+```text
+$app-qa-human profile=L0 Play this game through one meaningful loop and retry.
+Check how controls and goals are discovered; report input/tool limits separately.
+```
+
+Before a cold run, keep requirements, prior findings and expected routes with the coordinator. After the attempt, preserve user learning before technical diagnosis. If the host cannot isolate product knowledge, continue supported checks and label the result informed/unverified. Screenshots OFF remains respected; DOM-only checks do not certify visual discovery. A successful task can still have usability friction; an AI failure alone does not prove a product bug.
+
+See [profiles and knowledge boundaries](references/experience-profiles.md), [repeat-use memory](references/session-memory.md), [game loops](references/gameplay.md), and the [report template](templates/experience-report.md). The optional [JSON template](templates/experience-run.json) is explicitly unexecuted. Existing schema 2.0 reports and case statuses remain compatible; strict consumers use a linked companion for the experience extension.
+
+```sh
+python scripts/validate_experience.py report.json --require-experience
+python -m unittest discover -s tests -v
+```
+
+The validator checks record consistency, not actual execution, isolation or user satisfaction. No new runtime dependencies are required; the existing XLSX export still optionally uses `openpyxl`. See [experience acceptance checks](references/experience-evaluation.md) and [the development validation record](evals/2026-11-10-experience.md) for the exact tested scope and limitations.
 
 ## What it does
 
 | Capability | Result |
 |---|---|
+| Experience profiles | L0/L1/L2/Lapsed, knowledge provenance and assistance-aware comparisons |
+| Direct game/product journeys | Core input, a meaningful loop, result/reopen and retry when tooling supports them |
 | Human-centered exploration | Checks whether a user can find an action, predict its result, understand feedback, and recover |
 | Existing checklists | Executes human or `qa-checklist` cases while retaining IDs, expectations, evidence, and run history |
 | Task completion | Opens downloaded files, reopens saved data, and checks the actual input method |
@@ -35,7 +73,7 @@ Preserve case IDs and earlier runs, and append the observed results and evidence
 
 To review without changing the list, request a report-only review. Preparing a checklist does not start live QA or authorize app changes. See the [handoff contract](references/checklist-handoff.md) and [maintainer regression cases](references/handoff-evaluation.md).
 
-This 2026-11-02 publication includes the locally installed checklist handoff instructions. The evaluation results dated 2026-10-19 below describe the earlier version; they are not a new behavior evaluation of these additions. This publication checks document structure, references, and synchronization, not improved QA accuracy or live app execution.
+Historical note: the 2026-11-02 publication added checklist handoff instructions. The 2026-10-19 results below describe an earlier version, not the experience-profile extension or evidence of improved live QA accuracy.
 
 ## Codex, Claude Code, and Gemini CLI
 
@@ -63,6 +101,8 @@ gemini skills list
 For a single project use `.claude/skills/app-qa-human` or Gemini's `--scope workspace`. The `$app-qa-human` examples below are Codex examples; use Claude's slash command or Gemini's natural-language activation instead. Plain chat websites, Claude uploads, and Antigravity/agy discovery are separate host integrations and are not certified by these CLI checks.
 
 See [compatibility evidence and limits](COMPATIBILITY.md).
+
+Experience-profile instructions do not imply a configured isolated-agent runner, native desktop controller or certified support for every game engine. Use tools already available to the host and report missing properties precisely.
 
 ## Install
 

@@ -1,0 +1,53 @@
+{
+  "id": "SETUP-LIVE-20261110",
+  "recorded_at": "2026-11-10T02:34:44.470478+00:00",
+  "executor": "AI assistant / experience_live_trial",
+  "task_source": "parent task packet",
+  "requested_profile": "compare",
+  "requested_screenshots": "on",
+  "requested_entry": "http://127.0.0.1:8765/notes.html",
+  "authorized_effects": "로컬 disposable fixture 메모 생성·편집. 외부 전송/운영 변경 없음.",
+  "knowledge_before": "제품 목표와 URL만 제공받음. app-qa-human 절차 문서와 report template 읽음. 제품 소스/fixture/평가 rubric/기존 보고서 미열람.",
+  "knowledge_boundary": "unverified",
+  "knowledge_boundary_reason": "호스트의 실제 전체 컨텍스트 격리를 별도로 검증하지 못함. 독립 cold 사용자 시험으로 주장하지 않음.",
+  "charter": {
+    "goal": "첫 메모/내일 우유 사기를 저장 후 재열기; 복귀해 편집; 여러 메모 반복 작업",
+    "completion_basis": "실제 UI 입력·저장·재열기에서 값 확인. 토스트만으로 완료 판정하지 않음.",
+    "risk": "저장 데이터 손실/재방문과 반복 작업 시 상태 혼동",
+    "stop": "목표 완료, 권한 경계, UI 접근 차단, 동일 장애에서 최대 2회 합리적 복구. L2는 관찰한 숙련 근거가 있을 때만."
+  },
+  "capability_checks": [
+    {
+      "id": "SETUP-01",
+      "action": "기존 Python Playwright로 설치된 Chromium headless 실행",
+      "outcome": "브라우저 시작 실패",
+      "evidence": "BrowserType.launch TargetClosedError; socket() failed: Operation not permitted (1)",
+      "product_observed": false
+    },
+    {
+      "id": "SETUP-02",
+      "action": "클라우드 Browser에서 지정 localhost URL 열기",
+      "outcome": "접속 실패",
+      "evidence": "net::ERR_CONNECTION_REFUSED",
+      "product_observed": false
+    },
+    {
+      "id": "SETUP-03",
+      "action": "기본 exec 소켓 capability 검사",
+      "outcome": "AF_UNIX 생성 EPERM; AF_INET 생성 가능",
+      "product_observed": false
+    },
+    {
+      "id": "SETUP-04",
+      "action": "기본 exec에서 localhost:8765 TCP 연결 검사",
+      "outcome": "ECONNREFUSED",
+      "product_observed": false
+    }
+  ],
+  "screenshot_capture": "현재까지 unavailable: 실제 제품 화면 도달 못함",
+  "state_change": "없음",
+  "causality_limit": "환경에서 UI 접근이 실패했다는 증거이며 제품 결함/전체 서버 상태를 입증하지 않음.",
+  "final_status": "blocked_before_product_UI",
+  "stop_reason": "부모도 같은 socket EPERM을 확인한 뒤 추가 우회·권한 상승 없이 종료를 지시함.",
+  "cua_completion_summary": "완료. 로컬 브라우저 연결 제한 확인으로 마무리함."
+}

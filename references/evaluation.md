@@ -2,6 +2,8 @@
 
 For checklist interoperability changes, also use [handoff regression cases](handoff-evaluation.md).
 
+For experience-level, learning or game-loop changes, also use [experience evaluation](experience-evaluation.md). Keep those targeted checks separate from the historical synthetic totals and from live product trials.
+
 Use identical build/commit, PRD revision, clean test data, accounts/roles, model/effort, tools, device and completion scope. Accuracy is primary; record elapsed effort as secondary, not a reason to skip required checks. Apply the same disclosed resource ceiling if necessary and retain incomplete coverage. Use fresh contexts; do not feed one review's findings to the other. Respect Astra-only/no-delegation constraints: run sequentially in separate sessions. Randomize order over repeated trials where practical. Do not change app-qa to make the comparison easier.
 
 Evaluate against independently confirmed ground truth or an adjudicated issue list. Record validated unique defects, false positives, missed seeded defects, executable case quality, requirement traceability, recovery/discoverability findings with evidence, unsafe actions, unsupported claims, and elapsed effort. Precision/recall require explicit denominators; mark undefined or unknown rather than invent percentages. More findings or longer reports do not prove better QA. Distinguish static maintainer review, scripted format validation, synthetic behavior tests, and live application trials.

@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-10",
+  "base_commit": "f192c22bbfb4cd3b48716aed8e886d09efe733fb",
+  "validation_scope": "Final structural/data checks; no live product success verified",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_assistance_preserves_link (test_experience.ExperienceTests.test_assistance_preserves_link) ... ok\ntest_blocked_plan_does_not_require_invented_experience (test_experience.ExperienceTests.test_blocked_plan_does_not_require_invented_experience) ... ok\ntest_cli_roundtrip_does_not_modify_input (test_experience.ExperienceTests.test_cli_roundtrip_does_not_modify_input) ... ok\ntest_cold_boundary_requires_evidence (test_experience.ExperienceTests.test_cold_boundary_requires_evidence) ... ok\ntest_export_preserves_experience_and_literal_knowledge (test_experience.ExperienceTests.test_export_preserves_experience_and_literal_knowledge) ... ok\ntest_guided_l0_not_cold (test_experience.ExperienceTests.test_guided_l0_not_cold) ... ok\ntest_hidden_assistance_and_missing_help_evidence (test_experience.ExperienceTests.test_hidden_assistance_and_missing_help_evidence) ... ok\ntest_malformed_extension_is_clear_error (test_experience.ExperienceTests.test_malformed_extension_is_clear_error) ... ok\ntest_new_learning_and_duplicate_ids (test_experience.ExperienceTests.test_new_learning_and_duplicate_ids) ... ok\ntest_observed_repeat_and_unearned_experience (test_experience.ExperienceTests.test_observed_repeat_and_unearned_experience) ... ok\ntest_seeded_and_mixed_provenance (test_experience.ExperienceTests.test_seeded_and_mixed_provenance) ... ok\ntest_unexecuted_or_unsupported_pass (test_experience.ExperienceTests.test_unexecuted_or_unsupported_pass) ... ok\ntest_unexecuted_template_and_legacy (test_experience.ExperienceTests.test_unexecuted_template_and_legacy) ... ok\ntest_unresolved_and_missing_prior_references (test_experience.ExperienceTests.test_unresolved_and_missing_prior_references) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.196s\n\nOK"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_experience.py",
+        "templates/experience-run.json",
+        "--require-experience"
+      ],
+      "exit_code": 0,
+      "output": "{\"extension\": \"1.0\", \"run_id\": \"RUN-PLAN\", \"validation\": \"record consistency only; execution and isolation not verified\"}"
+    },
+    {
+      "command": [
+        "python3",
+        "<installed-skill-validator>/quick_validate.py",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_experience.py",
+        "evals/runs/2026-11-10/live/L0-01.json",
+        "--require-experience"
+      ],
+      "exit_code": 0,
+      "output": "{\"extension\": \"1.0\", \"run_id\": \"RUN-LIVE-L0-01\", \"validation\": \"record consistency only; execution and isolation not verified\"}"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_experience.py",
+        "evals/runs/2026-11-10/live/L1-01.json",
+        "--require-experience"
+      ],
+      "exit_code": 0,
+      "output": "{\"extension\": \"1.0\", \"run_id\": \"RUN-LIVE-L1-01\", \"validation\": \"record consistency only; execution and isolation not verified\"}"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_experience.py",
+        "evals/runs/2026-11-10/live/L2-01.json",
+        "--require-experience"
+      ],
+      "exit_code": 0,
+      "output": "{\"extension\": \"1.0\", \"run_id\": \"RUN-LIVE-L2-01\", \"validation\": \"record consistency only; execution and isolation not verified\"}"
+    }
+  ],
+  "local_markdown_links": "passed",
+  "json_files_parsed": 6,
+  "runtime_sha256": {
+    "SKILL.md": "be850fe8dd39ac3962b5895eea9dd54c2ba088ffd99b7f1a214b47401126fb4e",
+    "agents/openai.yaml": "c09395b556d16aa0ec550ab0343a63a4167d9c1f5b8d84878ffcfa88d8badeec",
+    "references/baseline-evaluation-cases.md": "737025879f7bf907440df9b7a7e7976484718c69235024a5dc62e608c174fc09",
+    "references/baseline.md": "fa337ddb6fc0d8ba4bb954fd62a0a4bd3c1f885c245f9d2d751d858d623329d8",
+    "references/cases-and-reports.md": "b36f46d5d6ca22fcc32974c6c5824590b67f9cbf2600f14b0e1e162bb5fca26b",
+    "references/checklist-handoff.md": "5b1b947208f7fd0bbf97f5bfa5b906af66844c2c6b2bf10dde23be66a2d2ef80",
+    "references/evaluation.md": "d3bec3770dca3bc7710d1350a3a66241b584f659daec6e83aa3533bf8a18bf90",
+    "references/experience-evaluation.md": "29206b1ef23080e5b41c68326787a2e7188faf84be368f9a52e553ff3a6e3a45",
+    "references/experience-profiles.md": "5a67e2f33453edf40dd6fc119bc064d0934ef0d9649b82e42ad986b40cef02b7",
+    "references/gameplay.md": "9c02ad722e825a9f1d5c6cef004c5faa6e8e3e4bbc425f9f7f308068dae60a4d",
+    "references/handoff-evaluation.md": "1ada27049ff46f1624c4dc95525b766c725acb9d6122661b1a04470d11d3d7b2",
+    "references/human-errors.md": "4df44c405e06d0021e7be8ff8e62b5c3466bde7e9655f7697c57e16048964463",
+    "references/knowledge.md": "14c4814cd74fbcdbacf5cfc0ae15e50c7541f30952bdc8eab4d78c087a1f1c89",
+    "references/participant.md": "2d596662fd3726e659932bb5fc8624e09a8fe9d3c5dc18cf36d3b3a70a07876c",
+    "references/screenshots.md": "a53a9598932ec8a4c0ddf4910a93667b7a9c8732ed60ef3a3441a338dd5a6fd4",
+    "references/session-memory.md": "132eeb8983e562ced1f8c4d2594f0b87e11d2ea25a8ca4fcf0c0550ff5eded8e",
+    "references/store-review.md": "6504ef70b24509e7859986bda61a5ee1b95a9254c26ec43df10a46ae888eea87",
+    "references/task-completion.md": "feeeb119623a495f4c4b0401b0ad0ef1400aba42d7654eeffcf352e34e9121b4",
+    "references/tool-execution.md": "e094fabacf90ab5ba488c0e0e54fc065764169242f1c469ac58e7f725a082bc4",
+    "scripts/export_xlsx.py": "3ddfad50e948c7553257b26300ddd6599280a0664ea7745f0fba8b852e0c989e",
+    "scripts/validate_experience.py": "82570628b34c8a32bdcbc1542cb14a62a75b13b2d15061de184b8c3ed6412edc",
+    "templates/experience-report.md": "2f6a76979f4a1e12b5d678893678b627358c1a156164a858f5495c74dfb016ac",
+    "templates/experience-run.json": "0ed54c8b42668b8ee31e36dc0f98cd0c023062910e9f5ca394eb0bb8bc2fb1a6"
+  }
+}

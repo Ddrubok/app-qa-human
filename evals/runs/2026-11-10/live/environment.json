@@ -1,0 +1,20 @@
+{
+  "id": "ENV-LIVE-20261110",
+  "entry_point": "http://127.0.0.1:8765/notes.html",
+  "build": null,
+  "platform": "Linux",
+  "python_version": "3.12.14",
+  "playwright_version": "1.62.0",
+  "browser": "Chromium launch attempted; no usable browser session",
+  "browser_version": null,
+  "actual_viewport": null,
+  "planned_viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "locale_planned": "ko-KR",
+  "input_exercised": [],
+  "product_surface_observed": false,
+  "mocks": "별도의 모의 성공 응답 또는 상태 주입 없음",
+  "evidence_origin": "current execution"
+}
