@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>메모함 — QA fixture</title>
+<style>
+body{font:18px system-ui;max-width:850px;margin:40px auto;padding:0 24px;background:#f5f4ef;color:#18202a}button,input,textarea{font:inherit}button{padding:10px 16px;margin:5px;border:1px solid #768087;border-radius:6px;background:white;cursor:pointer}input,textarea{display:block;box-sizing:border-box;width:100%;margin:8px 0 20px;padding:12px;border:1px solid #768087;border-radius:6px}textarea{height:180px}section{padding:24px;background:white;border-radius:12px}li{margin:10px 0}#status{min-height:28px;color:#195529}small{color:#52606a}nav{margin:20px 0}[hidden]{display:none!important}
+</style>
+<h1>메모함</h1><p>메모를 작성하고 저장한 뒤 다시 열어 보세요.</p>
+<small>로컬 시험용입니다. 이 브라우저에만 메모를 저장합니다.</small>
+<nav><button id="home">메모 목록</button><button id="new">새 메모</button><button id="help">도움말</button></nav>
+<p id="status" role="status"></p>
+<section id="list"><h2>저장된 메모</h2><p id="empty">아직 저장된 메모가 없습니다.</p><ul id="items"></ul></section>
+<section id="editor" hidden><h2>메모 작성</h2><label for="title">제목</label><input id="title" maxlength="80"><label for="body">내용</label><textarea id="body"></textarea><button id="save">저장</button><button id="cancel">취소</button><p>저장한 메모는 목록에서 다시 열어 확인할 수 있습니다.</p></section>
+<section id="helpbox" hidden><h2>사용 방법</h2><p>새 메모를 눌러 제목과 내용을 적고 저장하세요. 목록에서 제목을 누르면 다시 열 수 있습니다. 수정 후에도 저장을 눌러 주세요.</p><p>저장하지 않고 목록으로 돌아가거나 취소하면 변경 내용은 남지 않습니다.</p><button id="closehelp">목록으로 돌아가기</button></section>
+<script>
+const KEY='app-qa-human-notes-fixture-v1';
+let notes=JSON.parse(localStorage.getItem(KEY)||'[]'),editing=null;
+const el=id=>document.getElementById(id);
+function show(name){for(const id of ['list','editor','helpbox'])el(id).hidden=id!==name;}
+function list(){show('list');el('items').replaceChildren();el('empty').hidden=notes.length>0;for(const note of notes){const li=document.createElement('li'),button=document.createElement('button');button.textContent=note.title;button.onclick=()=>edit(note.id);li.append(button);el('items').append(li);}}
+function edit(id){editing=id;const note=notes.find(n=>n.id===id);el('title').value=note?.title||'';el('body').value=note?.body||'';el('status').textContent='';show('editor');}
+el('new').onclick=()=>edit(null);el('home').onclick=()=>{el('status').textContent='';list();};el('cancel').onclick=()=>{el('status').textContent='변경을 취소했습니다.';list();};
+el('help').onclick=()=>{el('status').textContent='';show('helpbox');};el('closehelp').onclick=list;
+el('save').onclick=()=>{if(!el('title').value.trim()){el('status').textContent='제목을 입력해 주세요.';return;}const note={id:editing||crypto.randomUUID(),title:el('title').value,body:el('body').value};const index=notes.findIndex(n=>n.id===note.id);if(index<0)notes.push(note);else notes[index]=note;try{localStorage.setItem(KEY,JSON.stringify(notes));el('status').textContent='저장했습니다.';list();}catch(error){el('status').textContent='저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.';}};
+list();
+</script></html>

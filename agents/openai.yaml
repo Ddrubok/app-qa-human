@@ -1,4 +1,4 @@
 interface:
   display_name: "app-qa-Human"
-  short_description: "사용자의 실제 조작부터 저장·다운로드 결과까지 확인하는 탐색형 앱 QA"
-  default_prompt: "$app-qa-human으로 사용자가 하려는 일을 완료 결과까지 검증하고 스크린샷 근거를 포함해 QA 보고서를 작성해주세요. 스크린샷은 기본 ON이며 screenshots=off로 끌 수 있습니다."
+  short_description: "초보·재방문·숙련자 관점으로 앱과 게임을 직접 검증하고 보고하는 QA"
+  default_prompt: "$app-qa-human으로 이 제품을 초보·재방문·숙련자 관점에서 직접 QA하고, 실제 사용 이력과 스크린샷 근거를 구분한 비교 보고서를 작성해주세요."

@@ -6,7 +6,7 @@ Use this reference for execution QA. It supplements the shared baseline; it does
 
 Turn a screen or manual section into a user goal: for example, "download a customer list and read its Korean names" or "change a setting and find the same value after reopening." Record the expected outcome and its source. A control's presence is a separate check from the action it promises.
 
-Follow a requested manual sequence. For each relevant section, record the task, actions actually taken, completion evidence, and remaining stage. Group related screens into one journey when appropriate; do not inflate coverage by counting each screenshot as a completed task. Do not add unsupported requirements such as persistence for a counter intended to reset.
+Follow a requested manual sequence, labeling it guided rather than independent discovery. For a cold experience attempt, the coordinator keeps the manual/expected route private and provides only a neutral outcome goal under [Experience profiles](experience-profiles.md). For each relevant section, record the task, actions actually taken, completion evidence, and remaining stage. Group related screens into one journey; do not count screenshots as completed tasks or invent persistence requirements.
 
 ## Use the interaction being evaluated
 

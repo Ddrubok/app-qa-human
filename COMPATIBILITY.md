@@ -1,5 +1,7 @@
 # Compatibility evidence
 
+Experience-profile extension, 2026-11-10: the L0/L1/L2/Lapsed workflow is host-neutral guidance. A host must provide suitable interaction and observation tools; independently cold sessions also need inspectable knowledge/context isolation. No bundled isolated-agent runner or native desktop driver was added. See [development validation](evals/2026-11-10-experience.md) for tested behavior; the historical host checks below do not certify the new workflow.
+
 Checked on 2026-10-07.
 
 | Host | Evidence | Limit |

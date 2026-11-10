@@ -29,6 +29,18 @@ Markdown may show a compact table with long evidence beneath it. JSON uses `sche
 
 Screenshot lifecycle and coverage follow [Screenshot evidence](screenshots.md). Functional test status and visual-review status are independent.
 
+## Experience-level reports
+
+For direct experience QA use [Experience profiles](experience-profiles.md) and the optional `experience` extension 1.0 in [Session memory](session-memory.md). Keep `schema_version: "2.0"`, case/finding cores and all existing status enums. Legacy reports without the extension remain valid. Strict consumers receive a linked companion record rather than unexpected keys.
+
+Write one run report per attempt, retaining stable case IDs across runs. A campaign comparison links these reports by run ID; never overwrite an L0 failure with an L2 success. Preserve external assistance as a separate linked attempt and record knowledge boundary independently of task status. An informed run may verify a functional outcome without proving cold discoverability. A passed task may have evidenced usability friction. Record proposed expectations separately from confirmed requirement mismatches.
+
+Use [experience-report.md](../templates/experience-report.md) and the unexecuted [experience-run.json](../templates/experience-run.json). For extension references use IDs in `sources` (`id` or `source_id`) that resolve to actual setup, observations, supplied knowledge or prior reports. `python scripts/validate_experience.py report.json` checks extension consistency; add `--require-experience` when it is required. This does not certify execution, cold isolation, report accuracy or physical-device behavior.
+
+Report goal completion, discovered help, backtracks/retries, unresolved confusion and learning per run when observed. State denominators and intentional state differences; do not infer causal superiority from unmatched builds/roles or treat linked learning sessions as independent users. Unknown measurements stay null. Do not convert tool/model elapsed time into human speed or AI outcomes into human success rates.
+
+The existing XLSX exporter preserves extra top-level data in Sources run-context and case extensions as literal cells. Keep the canonical report/companion with the comparison; it does not create a dedicated experience dashboard or validate lineage. Do not change the shared checklist-handoff contract solely to carry local experience metadata.
+
 ## XLSX export
 
 For requested Excel output, use [export_xlsx.py](../scripts/export_xlsx.py) with an existing Python/openpyxl environment: `python scripts/export_xlsx.py report.json report.xlsx`. The helper writes Cases, Coverage and Sources; Findings is included when present. Sources include run context and assumptions/limitations. It is an optional export tool, not an installation prerequisite for QA. If unavailable, use an existing workbook tool with equivalent checks or deliver an explicitly identified Markdown/JSON alternative. Never rename CSV as XLSX or install a stack merely for routine review.

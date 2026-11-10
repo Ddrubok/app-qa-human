@@ -4,7 +4,7 @@ Produce a review the user can act on: what fails, under which conditions, how it
 
 ## Scope and evidence
 
-- Identify the actual project, platform, build, and important user journeys. Read applicable project instructions and existing QA/fix reports before treating an old issue as current.
+- Identify the actual project, platform, build, and important user journeys. Honor applicable project instructions. For experience-level QA, apply [Experience profiles](experience-profiles.md) before loading product knowledge: the coordinator reads requirements and old QA/fix reports for setup/adjudication, not into a cold participant's context. If mandatory project instructions expose product knowledge, mark that attempt informed; never ignore higher-priority instructions to manufacture isolation. Reconcile old issues only after freezing the experience record.
 - A QA-only request permits inspection, local checks, and report artifacts; it does not itself request app changes or deployment. If the user also requests fixes, carry out that authorized scope rather than stopping at a report or asking again.
 - Use available test accounts, mocks, or emulators for actions that would create accounts, send messages/mail, charge money, submit reports, or delete data. Do not treat a live product review as authorization for those effects. Mocked success demonstrates only the mocked portion of the flow.
 - Before a check with side effects, verify the actual server, data store, external services, and permitted targets from available configuration and existing authorization. A test account or emulator does not prove isolation. If the boundary is unclear, defer that action and continue independent checks; do not ask again for authorization already established.
@@ -17,7 +17,7 @@ Produce a review the user can act on: what fails, under which conditions, how it
 
 Choose relevant journeys rather than mechanically auditing every feature. Typical paths include first visit → signup/recovery → discovery → join/approval → conversation → cancellation/settings/account exit.
 
-For a suspected defect, follow the visible control through state, service, backend, and access rules as applicable. Check sibling callers and alternative entry points, including notifications and profile previews. A missing UI guard may be enforced by server rules; distinguish a bypass from an unfriendly error. A timer label is not server expiry enforcement.
+For a suspected defect, freeze the user-visible attempt first, then follow the control through state, service, backend and access rules as applicable. Do not feed diagnostic knowledge into a claimed cold or learning-only session. Check sibling callers and alternative entry points, including notifications and profile previews. A missing UI guard may be enforced by server rules; distinguish a bypass from an unfriendly error. A timer label is not server expiry enforcement.
 
 Cover meaningful boundaries for the feature being inspected:
 

@@ -1,0 +1,184 @@
+{
+  "schema_version": "2.0",
+  "mode": "quick",
+  "scope": "재방문해 기존 메모 편집",
+  "environment": {
+    "id": "ENV-LIVE-20261110",
+    "entry_point": "http://127.0.0.1:8765/notes.html",
+    "build": null,
+    "platform": "Linux",
+    "python_version": "3.12.14",
+    "playwright_version": "1.62.0",
+    "browser": "Chromium launch attempted; no usable browser session",
+    "browser_version": null,
+    "actual_viewport": null,
+    "planned_viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "locale_planned": "ko-KR",
+    "input_exercised": [],
+    "product_surface_observed": false,
+    "mocks": "별도의 모의 성공 응답 또는 상태 주입 없음",
+    "evidence_origin": "current execution"
+  },
+  "sources": [
+    {
+      "id": "TASK",
+      "kind": "supplied task",
+      "path": "setup.json",
+      "description": "지정 URL, 목표, disposable 로컬 데이터 권한 및 compare/screenshots=on 요청"
+    },
+    {
+      "id": "SETUP",
+      "kind": "current execution",
+      "path": "setup.json",
+      "executor": "AI assistant / experience_live_trial"
+    },
+    {
+      "id": "ENV",
+      "kind": "current execution",
+      "path": "environment.json"
+    },
+    {
+      "id": "SETUP-ACTIONS",
+      "kind": "current execution",
+      "path": "setup-actions.jsonl",
+      "description": "제품 조작이 아닌 도구 capability/연결 검사"
+    },
+    {
+      "id": "PRIOR-L0",
+      "kind": "prior run record",
+      "path": "L0-01.json",
+      "description": "UI 도달 전 blocked. 사용자 학습 없음"
+    }
+  ],
+  "assumptions": [
+    "profile=compare는 독립 사용자 비교가 아닌 순차 학습 비교로 계획했다. 실제 학습 순서는 시작되지 않았다."
+  ],
+  "cases": [
+    {
+      "id": "TC-002",
+      "title": "재방문해 기존 메모 편집",
+      "environment_ref": "ENV-LIVE-20261110",
+      "preconditions": [
+        "지정 로컬 제품에 접근 가능한 실제 UI 세션",
+        "허가된 disposable 로컬 데이터"
+      ],
+      "steps": [],
+      "planned_steps": [
+        "이전 메모를 재열기",
+        "내용 편집·저장",
+        "재열기 검증"
+      ],
+      "expected_results": [
+        "첫 메모를 다시 찾아 편집·저장하고 재열어 수정 결과가 확인됨"
+      ],
+      "expectation_basis": [
+        "TASK: 요청된 사용자 목표; 제품의 별도 요구사항은 미열람"
+      ],
+      "priority": "P2",
+      "status": "not-run",
+      "actual_result": null,
+      "evidence_refs": [],
+      "cleanup": {
+        "required": false,
+        "actual": "제품 데이터 변경 없음. 폐기할 메모 또는 복원할 제품 상태 없음."
+      },
+      "not_run_reason": "미실행. 앞선 제품 사용과 학습이 없어 returning/practiced 사용자 실행으로 진행하지 않았다."
+    }
+  ],
+  "findings": [],
+  "coverage": [
+    {
+      "area": "1. 기능과 업무 규칙",
+      "status": "not-tested",
+      "reason": "제품 UI 시작 전 차단"
+    },
+    {
+      "area": "2. 사용성·시각·접근성",
+      "status": "not-tested",
+      "reason": "화면/입력 관찰 없음"
+    },
+    {
+      "area": "3. 중단과 수명주기",
+      "status": "not-tested",
+      "reason": "제품 세션 시작 안 됨"
+    },
+    {
+      "area": "4. 예외·네트워크·복구",
+      "status": "not-tested",
+      "reason": "도구 연결 제한만 관찰. 제품 오류 처리는 미검증"
+    },
+    {
+      "area": "5. 데이터 무결성·권한·개인정보",
+      "status": "not-tested",
+      "reason": "제품 데이터 입력·저장 없음"
+    },
+    {
+      "area": "6. 호환성·성능·신뢰성",
+      "status": "not-tested",
+      "reason": "호스트 브라우저 시작 실패만 확인. 제품 성능 판단 불가"
+    },
+    {
+      "area": "7. 배포·운영 준비",
+      "status": "not-applicable",
+      "reason": "로컬 메모 여정만 요청됨"
+    }
+  ],
+  "limitations": [
+    "제품 화면을 보거나 UI 조작을 수행하지 못했다. 제품 기능의 통과·실패 또는 사용성 결론을 내리지 않는다.",
+    "브라우저 실행/연결 실패는 관찰한 환경 제약이다. 제품 내부 원인이나 제품 서버 전체의 상태는 확인하지 않았다.",
+    "제품 소스, fixture 파일, 기존 보고서, 평가 rubric은 읽지 않았다. 절차 문서는 읽었다.",
+    "도구·전체 컨텍스트 격리의 독립 검증이 없어 cold-validity는 unverified다.",
+    "스크린샷 옵션은 on이지만 제품 화면 캡처와 저장 이미지 검토는 수행하지 못했다.",
+    "한글 IME, 실제 사용자 완료 시간, 접근성, 모바일, 네트워크 복구, 저장 지속성은 미검증이다."
+  ],
+  "screenshots": {
+    "option": "on",
+    "coverage": "not-run",
+    "images": [],
+    "reason": "제품 화면에 도달하지 못했으며 캡처를 생성하지 않았다."
+  },
+  "experience": {
+    "contract_version": "1.0",
+    "campaign_id": "CAMPAIGN-LIVE-20261110",
+    "run_id": "RUN-LIVE-L1-01",
+    "profile": "L1",
+    "experience_basis": "none",
+    "previous_run_refs": [
+      "PRIOR-L0"
+    ],
+    "knowledge_boundary": {
+      "status": "unverified",
+      "observation_mode": "visual",
+      "basis_refs": [
+        "SETUP"
+      ],
+      "exposures": []
+    },
+    "state": {
+      "setup": "unknown",
+      "description": "새 브라우저 컨텍스트를 계획했으나 브라우저 시작 실패. 실제 제품 데이터 상태 미관찰.",
+      "evidence_refs": [
+        "SETUP"
+      ]
+    },
+    "assistance": {
+      "external": false,
+      "events": []
+    },
+    "knowledge_before": [],
+    "knowledge_after": [],
+    "unresolved": [
+      "제품 UI와 저장 상태를 확인하지 못함"
+    ],
+    "metrics": {
+      "product_actions": 0,
+      "product_wait_seconds": null,
+      "human_completion_time_seconds": null,
+      "tool_model_overhead_seconds": null
+    }
+  },
+  "execution_note": "L0는 setup 단계에서 차단된 시도다. L1/L2는 단계별 미실행 기록이며 실제 경험 attempt나 숙련의 증거가 아니다."
+}
